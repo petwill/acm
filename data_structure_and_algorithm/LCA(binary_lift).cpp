@@ -41,15 +41,15 @@ int main () {
     //initialize if uses dynamic memory allocation
 	//tin.resize (n+1), tout.resize (n+1), up.resize (n+1);
     //for (int i = 1; i <=n; ++ i) up [i] .resize (l + 1);
-	l = 1;
-	while ((1 << l) <= n) ++ l;
+    l = 1;
+    while ((1 << l) <= n) ++ l;
 
-    for(int i = 0; i < m; i++){
+    for(int i = 0; i < m; i++) {
         int a, b;cin >> a >> b;
         g[a].push_back(b), g[b].push_back(a);
     }
     timer = 0;
-	dfs (1, 1);
+    dfs (1, 1);
     int a = 5, b = 4; // The current query
     int res = lca (a, b); // Response to a request
     printf("%d\n", res);
