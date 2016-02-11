@@ -42,29 +42,29 @@ bool same(int x,int y){
     return Find(x) == Find(y);
 }
 void addedge(int a, int b, int c){
-        e[E].u = a;
-        e[E].v = b;
-        e[E].cost = (LL)c;
-        E++;
+	 e[E].u = a;
+	 e[E].v = b;
+	 e[E].cost = (LL)c;
+	 E++;
 }
 bool cmp(const edge& e1, const edge& e2){
-    return e1.cost < e2.cost;
+    	return e1.cost < e2.cost;
 }
 void init(){
-    for(int i=1;i<=n;i++)
-	        par[i] = i, r[i] = 0;
+    	for(int i=1;i<=n;i++)
+    		par[i] = i, r[i] = 0;
 }
 LL kruskal() {
 	init();
-    sort(e, e+E, cmp);
-    LL res = 0;
-    for(int i = 0; i < E; i++){
-        if(!same(e[i].u, e[i].v)){
-            unite(e[i].u, e[i].v);
-            res += e[i].cost;
-        }
-    }
-    return res;
+	sort(e, e+E, cmp);
+	LL res = 0;
+    	for(int i = 0; i < E; i++){
+        	if(!same(e[i].u, e[i].v)){
+            		unite(e[i].u, e[i].v);
+            		res += e[i].cost;
+        	}
+    	}
+	return res;
 }
 
 int main(){
