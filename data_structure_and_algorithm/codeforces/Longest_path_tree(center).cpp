@@ -1,3 +1,4 @@
+/** 592D - Super M **/
 #include <bits/stdc++.h>
 
 using namespace std;
