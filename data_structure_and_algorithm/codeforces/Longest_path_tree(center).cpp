@@ -36,10 +36,10 @@ bool dfs(int u, int par = 0){
 }
 			
 int find_center(int start) {
-	R = start;dep[0] = -1; max_depth = 0;
+	R = start; dep[0] = -1; max_depth = 0;
 	dfs(start);
-	dep[0] = -1; max_depth = 0;
-	dep[R] = -1;dfs(R, R);
+	max_depth = 0; dep[R] = -1;
+	dfs(R, R);
 	int ret = R, d = max_depth/2;
 	while( d>0 ) {
 		d--;
