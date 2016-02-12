@@ -74,6 +74,7 @@ int main(){
 	}
 	int C = find_center(tmp);
 	dep[0] = -1;S = inf;dis = (max_depth+1)/2;
+	// distance(center, any other node) <= (longestpath + 1) / 2
 	dfs1(C);
 	if( max_depth & 1)
 		dfs1(parent[C]);
