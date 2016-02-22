@@ -1,4 +1,4 @@
-/** 592D - Super M **/
+/** codeforces 592D - Super M **/
 #include <bits/stdc++.h>
 
 using namespace std;
