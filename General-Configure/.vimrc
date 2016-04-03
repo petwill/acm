@@ -54,11 +54,9 @@ autocmd FileType tex nmap <F12> <ESC>\x:w<CR>:!xelatex %<CR>
 autocmd FileType tex imap <F11> <ESC>\x:w<CR>:!gnome-open %<.pdf<CR><CR>
 autocmd FileType tex imap <F12> <ESC>\x:w<CR>:!xelatex %<CR>
 
-augroup vimrc
-      au BufReadPre * setlocal foldmethod=indent
-      au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-augroup END
-set foldnestmax=2
+set fdm=indent
+set foldlevel=0
+set foldnestmax=1
 set foldminlines=7
 
 syntax on
