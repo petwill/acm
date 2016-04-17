@@ -28,7 +28,7 @@ autocmd FileType make set noexpandtab
 "nmap <bslash>p :set paste!<CR>
 nmap <bslash>x mzHmx:silent! :%s/[ \t][ \t]*$//g<CR>`xzt`z
 "nmap <bslash>t :Tlist<CR>
-imap jj <Esc>
+imap jj <Esc>:w<CR>
 
 autocmd FileType c nmap <F9> <ESC>\x:w<CR>:!gcc -O2 -Wall -std=c99 % -o %<<CR>
 autocmd FileType c nmap <F11> <ESC>\x:w<CR>:!./%<<CR>
