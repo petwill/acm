@@ -37,6 +37,9 @@ autocmd FileType c imap <F9> <ESC>\x:w<CR>:!gcc -O2 -Wall -std=c99 % -o %<<CR>
 autocmd FileType c imap <F11> <ESC>\x:w<CR>:!./%<<CR>
 autocmd FileType c imap <F12> <ESC>\x:w<CR>:!gcc -O2 -Wall -std=c99 % -o %< && ./%<<CR>
 
+autocmd Filetype cpp nmap ff <F9><CR>:wq<CR>
+autocmd Filetype cpp imap ff <F9><CR>:wq<CR>
+
 autocmd FileType cpp nmap <F9> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %<<CR>
 autocmd FileType cpp nmap <F11> <ESC>\x:w<CR>:!./%<<CR>
 autocmd FileType cpp nmap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %< && ./%<<CR>
