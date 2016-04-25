@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//判斷質數
+
 bool is_prime(int n){
     for(int i=2; i*i <= n; i++)
         if(n%i == 0)
@@ -12,7 +12,6 @@ bool is_prime(int n){
     return n != 1; //1 is an exception
 }
 
-//質因數分解
 map<int,int> prime_factor(int n){
     map<int,int> res;
     for(int i = 2; i * i <= n; i++){
