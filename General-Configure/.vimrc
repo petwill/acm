@@ -121,7 +121,7 @@ autocmd FileType cpp nmap ff <ESC>\x:w<CR>:!./%<
 autocmd FileType cpp nmap <F9> <ESC>\x:w<CR>:!g++ -D DEBUG -g -std=c++11 % -o %<<CR>
 autocmd FileType cpp nmap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %< && ./%<<CR>
 autocmd FileType cpp imap ff <ESC>\x:w<CR>:!./%<  
-autocmd FileType cpp imap <F9> <ESC>\x:w<CR>:!./%<  -D DEBUG -g -std=c++11 % -o %<<CR>  
+autocmd FileType cpp imap <F9> <ESC>\x:w<CR>:!g++ -D DEBUG -g -std=c++11 % -o %<<CR>  
 autocmd FileType cpp imap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %< && ./%<<CR>
 
 autocmd FileType python nmap <F11> <ESC>\x:w<CR>:!./%<CR>
