@@ -1,31 +1,29 @@
 autocmd FileType cpp call IoStream()
 fu! IoStream()
     if line("$") == 1
-        call append(0, "#include <bits/stdc++.h>")
-        call append(1, "")
-        call append(2, "using namespace std;")
-        call append(3, "")
-	call append(4, "#define mp make_pair")
-	call append(5, "#define pb push_back")
-	call append(6, "#define LL long long")
-	call append(7, "#define pii pair<int,int>")
-	call append(8, "#define PII pair<long long, long long>")
-	call append(9, "#define fi first")
-	call append(10, "#define se second")
-    call append(11, "#define all(x) (x).begin(),(x).end()")
-    call append(12, "#define SZ(x) ((int)(x).size())")
-	call append(13, "const int inf = 0x7fffffff;")
-	call append(14, "const LL  INF = 0x7fffffffffffffff;")
-    	call append(15, "const int mod = 1e9+7;")
-	call append(16, "typedef vector<int> vec;") 
-	call append(17, "typedef vector<vec> mat;")
-	call append(18, "#define maxn")
-	call append(19, "int main() {")
-	call append(20, "#ifdef DEBUG")
-	call append(21, "	freopen(\"out\", \"w\", stdout);")
-	call append(22, "#endif")
-        call append(23, "	return 0;")
-        call append(24, "}")
+    call append(0, "#include <bits/stdc++.h>")
+    call append(1, "using namespace std;")
+    call append(2, "#ifdef DEBUG")
+    call append(3, "    #define debug(...) printf(__VA_ARGS__)")
+    call append(4, "#else")
+    call append(5, "    #define debug(...) (void)0")
+    call append(6, "#endif")
+	call append(7, "#define mp make_pair")
+	call append(8, "#define pb push_back")
+	call append(9, "#define LL long long")
+	call append(10, "#define pii pair<int,int>")
+	call append(11, "#define PII pair<long long, long long>")
+	call append(12, "#define fi first")
+	call append(13, "#define se second")
+    call append(14, "#define all(x) (x).begin(),(x).end()")
+    call append(15, "#define SZ(x) ((int)(x).size())")
+	call append(16, "const int inf = 0x7fffffff;")
+	call append(17, "const LL  INF = 0x7fffffffffffffff;")
+   	call append(18, "const int mod = 1e9+7;")
+	call append(19, "#define maxn")
+	call append(20, "int main() {")
+    call append(21, "	return 0;")
+    call append(22, "}")
     endif
 endfu
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
@@ -106,11 +104,11 @@ set smartindent
 autocmd FileType python set tw=80 cc=+1
 autocmd FileType make set noexpandtab
 
-"nmap <bslash>p :set paste!<CR>
+set pastetoggle=<F2>
+nmap <bslash>p :set paste!<CR>
 nmap <bslash>x mzHmx:silent! :%s/[ \t][ \t]*$//g<CR>`xzt`z
-nmap ls :!ls<CR>
-"nmap <bslash>t :Tlist<CR>
-imap jj <Esc>:w<CR>
+nmap <bslash>t :Tlist<CR>
+imap jj <Esc>
 
 autocmd FileType c nmap <F9> <ESC>\x:w<CR>:!gcc -O2 -Wall -std=c99 % -o %<<CR>
 autocmd FileType c nmap <F11> <ESC>\x:w<CR>:!./%<<CR>
@@ -119,11 +117,11 @@ autocmd FileType c imap <F9> <ESC>\x:w<CR>:!gcc -O2 -Wall -std=c99 % -o %<<CR>
 autocmd FileType c imap <F11> <ESC>\x:w<CR>:!./%<<CR>
 autocmd FileType c imap <F12> <ESC>\x:w<CR>:!gcc -O2 -Wall -std=c99 % -o %< && ./%<<CR>
 
-autocmd FileType cpp nmap ff <ESC>\x:w<CR>:!g++ -Wall  -std=c++11 % -o %<<CR>
-autocmd FileType cpp nmap <F9> <ESC>\x:w<CR>:!./%<
+autocmd FileType cpp nmap ff <ESC>\x:w<CR>:!./%<  
+autocmd FileType cpp nmap <F9> <ESC>\x:w<CR>:!g++ -D DEBUG -g -std=c++11 % -o %<<CR>
 autocmd FileType cpp nmap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %< && ./%<<CR>
-autocmd FileType cpp imap ff <ESC>\x:w<CR>:!g++ -Wall  -std=c++11 % -o %<<CR>
-autocmd FileType cpp imap <F19> <ESC>\x:w<CR>:!./%<
+autocmd FileType cpp imap ff <ESC>\x:w<CR>:!./%<  
+autocmd FileType cpp imap <F9> <ESC>\x:w<CR>:!./%<  -D DEBUG -g -std=c++11 % -o %<<CR>  
 autocmd FileType cpp imap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %< && ./%<<CR>
 
 autocmd FileType python nmap <F11> <ESC>\x:w<CR>:!./%<CR>
