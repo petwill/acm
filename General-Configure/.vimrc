@@ -83,8 +83,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
 
-set nocompatible
 set number
+set nocompatible
 set hlsearch
 set ruler
 set cursorline
@@ -121,7 +121,7 @@ autocmd FileType cpp nmap ff <ESC>\x:w<CR>:!./%<
 autocmd FileType cpp nmap <F9> <ESC>\x:w<CR>:!g++ -D DEBUG -g -std=c++11 % -o %<<CR>
 autocmd FileType cpp nmap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %< && ./%<<CR>
 autocmd FileType cpp imap ff <ESC>\x:w<CR>:!./%<  
-autocmd FileType cpp imap <F9> <ESC>\x:w<CR>:!g++  -D DEBUG -g -std=c++11 % -o %<<CR>  
+autocmd FileType cpp imap <F9> <ESC>\x:w<CR>:!g++ -D DEBUG -g -std=c++11 % -o %<<CR>  
 autocmd FileType cpp imap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %< && ./%<<CR>
 
 autocmd FileType python nmap <F11> <ESC>\x:w<CR>:!./%<CR>
@@ -140,3 +140,29 @@ set foldnestmax=1
 set foldminlines=7
 
 syntax on
+execute pathogen#infect()
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+au FocusLost * :set norelativenumber
+au FocusGained * :set relativenumber
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber 
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 '
+
