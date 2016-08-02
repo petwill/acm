@@ -7,7 +7,11 @@ struct segment_tree{
     LL sum[4*MAXN];
     int tag[4*MAXN];
     const int inf = 1e9;
-
+    //sometimes needed
+    void init() {
+        //memset(tag, -1, sizeof(tag));
+        fill(tag, tag+4*MAXN, inf);
+    }
     void pull(int ind) {
             sum[ind] = sum[right(ind)] + sum[left(ind)];
             m[ind] = min(m[right(ind)] ,m[left(ind)]);
