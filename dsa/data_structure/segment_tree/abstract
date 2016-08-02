@@ -1,4 +1,3 @@
-
 #define MAXN maxn
 struct segment_tree{
     #define right(x) x << 1 | 1
@@ -44,7 +43,7 @@ struct segment_tree{
         if( R <= qr && L >= ql ) {
             return m[ind];
         }
-        push(ind);
+        
         int mid = (L+R)>>1;
         return min( query_min(left(ind), L, mid, ql, qr), query_min(right(ind), mid, R, ql, qr));
     }
@@ -53,6 +52,7 @@ struct segment_tree{
          if( R <= qr && L >= ql ) {
             return M[ind];
         }
+        
         int mid = (L+R)>>1;
         return max( query_max(left(ind), L, mid, ql, qr), query_max(right(ind), mid, R, ql, qr));
     }
@@ -69,8 +69,7 @@ struct segment_tree{
         if( L >= qr || R <= ql ) return;
         if( R <= qr && L >= ql ) {
             // depends on what you modify
-            m[ind] = min( m[ind], x );
-            tag[ind] = min(tag[ind], x);
+           
             return;
         }
         push(ind);
