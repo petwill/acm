@@ -20,6 +20,8 @@ struct segment_tree{
             tag[right(ind)] = min(tag[right(ind)], tag[ind]);
             m[left(ind)] = min( m[left(ind)], tag[left(ind)]);
             m[right(ind)] = min( m[right(ind)], tag[right(ind)]);
+            
+            //the answer of the left(ind) and right(ind) should be correct at this point
             tag[ind] = inf;
         }
     }
