@@ -134,6 +134,7 @@ int KM()
             ans += mat[t][i];
         }
     }
+    // 最大權 : 沒有負號
     printf("%d\n", -ans);
     return ans;
 }
@@ -158,8 +159,10 @@ int main(){
             for(int j =0;j<n;j++)
                 sum += t[j][i];
 
-            for(int j=0;j<n;j++)
+            for(int j=0;j<n;j++) {
+                // 最大權 : 沒有負號
                 mat[i][j] = -(sum-t[j][i]), debug("%d ", mat[i][j]);
+            }
             debug("\n");
         }
 
