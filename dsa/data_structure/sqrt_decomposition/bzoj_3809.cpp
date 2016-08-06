@@ -13,8 +13,8 @@
         printf("%d\n", off.ret[i]);
 **/
 
-const int MAXN = 500005;
-const int MAXV = 500005;
+const int MAXN = 500005; // max size of the array
+const int MAXV = 500005; // max element of the array
 const int MAXQ = 1000005;
 const int MAXSQRTV = 512;
 class Offline {
