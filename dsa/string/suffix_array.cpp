@@ -3,6 +3,8 @@
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
+#include<cassert>
+// including iostream can't compile !??
 //#include <iostream>
 using namespace std;
 /**
@@ -63,12 +65,18 @@ int main() {
     calheight(r,sa,n);
 
 
-    /** demonstrate
+//    /** demonstrate
+    assert(sa[0] == n);
     for(int i = 0; i <= n; i++) printf("%d ", sa[i]);
     printf("\n");
+    assert(Rank[n] == 0);
     for(int i = 0; i <= n; i++) printf("%d ", Rank[i]);
     printf("\n");
-    for(int i = 0; i <= n; i++) printf("%d ", height[i]);
+    //height[0] 沒有意義
+    assert(height[1] == 0); //since sa[0] is 空字串
+    printf("  ");
+    for(int i = 1; i <= n; i++) printf("%d ", height[i]);
     printf("\n");
-    **/
+//    **/
 }
+
