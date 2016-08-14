@@ -132,6 +132,12 @@ autocmd FileType python set tw=80 cc=+1
 autocmd FileType make set noexpandtab
 
 set pastetoggle=<F2>
+
+nmap <C-S-c> 0i//<Esc>
+imap <C-S-c> jj<C-S-c>
+nmap <C-S-x> 0xx
+imap <C-S-x> jj<C-S-x> 
+
 nmap <bslash>p :set paste!<CR>
 nmap <bslash>x mzHmx:silent! :%s/[ \t][ \t]*$//g<CR>`xzt`z
 nmap <bslash>t :Tlist<CR>
