@@ -1,3 +1,7 @@
+/**
+  check  http://morris821028.github.io/2015/07/08/poj-1811/
+  for fast factorization
+**/
 #include <cstdio>
 #include <map>
 #include <iostream>
