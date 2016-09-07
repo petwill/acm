@@ -11,7 +11,8 @@ Difference
              we can do this ==>  belong[ edge_index ] = vbcc_index
              
              But basically, vbcc and ebcc are SUBGRAPH !!
-             
+    
+    usually, bcc refers to ebcc ( ebcc 才可以縮點！　==> 縮完變樹! ) 
              
     p.s.
     A connected undirected graph is called a vertex cactus, if each vertex of this graph belongs to at most one simple cycle.
