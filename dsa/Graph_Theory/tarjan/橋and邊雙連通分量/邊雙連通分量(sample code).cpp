@@ -27,26 +27,31 @@ bool exist[Max][Max];
 void tarjan(int a,int fa) {
 
     dfn[a]=low[a]=++Time;
-    for(int v : edge[a]){
-        if(v!=fa)
-        {
-            if(dfn[v]==0)
+    // stack.push( a )
+    for(int v : edge[a])　if(v!=fa)　{
+           
+            if(！dfn[v]) // not visit
             {
                 tarjan(v,a);
-                if(low[a]>low[v])
-                    low[a]=low[v];
-                if(dfn[a] < low[v])
-                {
+                low[a] = min( low[a], low[v] );
+                
+                if(dfn[a] < low[v]) // main difference between tarjan for vbcc ( vbcc 有等號)
+              　{
                     exist[a][v] = exist[v][a] = true;
+                    // if it is cut_edge( or bridge )
                 }
+                
             }
             else
-            {
-                if(low[a]>dfn[v])
-                    low[a]=dfn[v];
-            }
-        }
+              low[a] = min( low[a], dfn[v] );
     }
+    /*
+    if( low[a] == dfn[a] ) {
+        ebcc+++;
+        pop_stack();
+    }
+    */
+
 }
 
 int cc[Max], ccCnt;
