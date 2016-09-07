@@ -46,7 +46,6 @@ ostream& operator << (ostream &o, const map<T1, T2> &mp) {
 }
 
 /** needed for tarjan **/
-// bcc is a set of edges 
 #define maxn 100005
 #define maxm 100005
 int n, m;
