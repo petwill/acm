@@ -15,6 +15,8 @@ Difference
              
     p.s.
     A connected undirected graph is called a vertex cactus, if each vertex of this graph belongs to at most one simple cycle.
-    A simple cycle in a undirected graph is a sequence of distinct vertices v1, v2, ..., vt (t > 2), such that for any i (1 ≤ i < t) exists an edge between vertices vi and vi + 1, and also exists an edge between vertices v1 and vt.
+    A simple cycle in a undirected graph is a sequence of distinct vertices v1, v2, ..., vt (t > 2), 
+    such that for any i (1 ≤ i < t) exists an edge between vertices vi and vi + 1, 
+    and also exists an edge between vertices v1 and vt.
     
     In this situation, vbcc is the same as ebcc
