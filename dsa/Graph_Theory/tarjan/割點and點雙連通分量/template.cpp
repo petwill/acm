@@ -45,6 +45,7 @@ ostream& operator << (ostream &o, const map<T1, T2> &mp) {
     return o;
 }
 
+//    regard every vbcc as a set of edges
 /** needed for tarjan **/
 #define maxn 100005
 #define maxm 100005
@@ -60,10 +61,7 @@ int bcnt, vbb[maxm];
 vector<int> vb[maxm];
 vector<int> G[maxn];
 /** **/
-/** 
-    this code will regard one single cut_edge as an independent vb
-    ==> will be counted in bcnt
-**/
+
 void tarjan(int s){
     dfn[s] = low[s] = ++Time;
     vis[s] = true;
