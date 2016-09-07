@@ -48,7 +48,6 @@ ostream& operator << (ostream &o, const map<T1, T2> &mp) {
 const LL mod = 1e9+7;
 LL pow2[100005];
 /** needed for tarjan **/
-// bcc is a set of verticles that doesn't contain cut_vertex
 #define maxn 100005
 #define maxm 100005
 int n, m;
