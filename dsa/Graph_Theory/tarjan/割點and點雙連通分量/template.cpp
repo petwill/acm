@@ -60,6 +60,10 @@ int bcnt, vbb[maxm];
 vector<int> vb[maxm];
 vector<int> G[maxn];
 /** **/
+/** 
+    this code will regard one single cut_edge as an independent vb
+    ==> will be counted in bcnt
+**/
 void tarjan(int s){
     dfn[s] = low[s] = ++Time;
     vis[s] = true;
