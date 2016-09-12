@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}Basic}{1}
+\contentsline {subsection}{\numberline {1.1}.vimrc}{1}
+\contentsline {subsection}{\numberline {1.2}Increase Stack Size}{1}
+\contentsline {section}{\numberline {2}Graph}{1}
+\contentsline {subsection}{\numberline {2.1}HLD}{1}
+\contentsline {subsection}{\numberline {2.2}bipartite graph matching}{3}
+\contentsline {subsection}{\numberline {2.3}Hungarian}{3}
+\contentsline {subsection}{\numberline {2.4}KM}{3}
+\contentsline {section}{\numberline {3}Data Structure}{4}
+\contentsline {subsection}{\numberline {3.1}Disjoint Set}{4}
+\contentsline {section}{\numberline {4}Math}{4}
+\contentsline {subsection}{\numberline {4.1}Prime Table}{4}
+\contentsline {subsection}{\numberline {4.2}Miller Rabin(prime test)}{4}
+\contentsline {subsection}{\numberline {4.3}Extended Euclidean Algorithm}{5}
+\contentsline {subsection}{\numberline {4.4}Matrix Fast Power}{5}
+\contentsline {subsection}{\numberline {4.5}Gauss Elimination}{6}
