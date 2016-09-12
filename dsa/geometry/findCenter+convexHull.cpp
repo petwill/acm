@@ -5,10 +5,10 @@ void input() {
     REP(i,n) p[i].read();
 }
 
-P center;
-void build() {
+
+P findCenter() {
     p[n]=p[0];
-    center=P{0,0};
+    P center=P{0,0};
     REP(i,n) {
         double v=p[i]*p[i+1];
         center.x += (p[i].x+p[i+1].x)*v;
@@ -18,6 +18,7 @@ void build() {
     REP(i,n) area+=p[i]*p[i+1];
     area /= 2;
     center /= 6*area;
+    return center;
 }
 
 P q1[N],q2[N],q[N];
