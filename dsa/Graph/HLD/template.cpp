@@ -1,4 +1,3 @@
-
 struct segment_tree{
     #define MAXN 100100
     #define right(x) x << 1 | 1
@@ -56,10 +55,10 @@ struct Tree{
         e.pb( edge{x, y}  );
     }
     int siz[MAXN],max_son[MAXN],pa[MAXN],dep[MAXN];
-    /*節點大小、節點大小最大的孩子、父母節點、深度*/
+    /*size of subtree、index of max_son, parent index、depth*/
     int link_top[MAXN],link[MAXN],Time;
-    /*每個點所在鏈的鏈頭、樹鏈剖分的DFS序、時間戳*/
-    std::vector<int >G[MAXN];/*用vector存樹*/
+    /*chain top、index in segtree、time stamp*/
+    std::vector<int >G[MAXN];
 
     void init(int N) {
         n = N;
@@ -98,12 +97,10 @@ struct Tree{
                 std::swap(ta,tb);
                 std::swap(a,b);
             }
-            //這裡可以對a所在的鏈做區間處理
-            //區間為(link[ta],link[a])
+            //interval [ link[ta], link[a] ]
             a = pa[ta];
             ta = link_top[a];
         }
-        /*最後a,b會在同一條鏈，若a!=b還要在進行一次區間處理*/
         return dep[a] < dep[b] ? a:b;
     }
     int query(int a,int b){
@@ -114,18 +111,16 @@ struct Tree{
                 std::swap(ta,tb);
                 std::swap(a,b);
             }
-            //對a鏈做區間處理
-            //區間為 [ link[ta],link[a] ]
+            //interval [ link[ta],link[a] ]
             a = pa[ta];
             ta = link_top[a];
         }
-        /*最後a,b會在同一條鏈，若a!=b還要在進行一次區間處理*/
         if( a == b ) return ret;
         else {
             if(dep[a]>dep[b])
                 swap(a,b);
-            //區間為 [ link[a],link[b] ]
-            // if operate on edges ==> [ link[ son[ta] ], link[b] ]
+            //interval [ link[a],link[b] ]
+            // if operate on edges ==> [ link[ max_son[ta] ], link[b] ]
         }
     }
     /// Heavy Light Decomposition

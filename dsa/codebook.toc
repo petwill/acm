@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Basic}{1}
+\contentsline {subsection}{\numberline {1.1}.vimrc}{1}
+\contentsline {subsection}{\numberline {1.2}Increase Stack Size}{1}
+\contentsline {section}{\numberline {2}Graph}{1}
+\contentsline {subsection}{\numberline {2.1}HLD}{1}
+\contentsline {section}{\numberline {3}Data Structure}{3}
+\contentsline {subsection}{\numberline {3.1}Disjoint Set}{3}
