@@ -1,11 +1,7 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 typedef vector<int> vec;
 typedef vector<vec> mat;
 typedef long long LL;
-
-const int M = 10000;
+const int mod = 10000;
 
 mat mul(mat &A, mat &B){
     mat C(A.size(), vec(B[0].size()));
@@ -13,13 +9,12 @@ mat mul(mat &A, mat &B){
     for(int i = 0; i < A.size(); i++) {
         for(int k = 0; k < B.size(); k++) {
             for(int j = 0; j < B[0].size(); j++) {
-                C[i][j] = (C[i][j] +A[i][k]*B[k][j]) % M;
+                C[i][j] = (C[i][j] +A[i][k]*B[k][j]) % mod;
             }
         }
     }
     return C;
 }
-
 mat pow(mat A, LL n){
     mat B(A.size(), vec(A.size()));
     for(int i = 0; i < A.size(); i++)
@@ -36,5 +31,6 @@ int main(){
     mat A(2, vec(2));
     A[0][0] = A[0][1] = A[1][0] = 1, A[1][1] = 0;
     A = pow(A, n);
+    //fibonacci number n term
     printf("%d", A[1][0]);
 }

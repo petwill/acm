@@ -4,8 +4,7 @@ int  num[100000],L[100000];
 int num_len,i,j;
 int previous[10000];
 int longest;
-void trace(int i)
-{
+void trace(int i) {
     if (previous[i] != -1)trace(previous[i]);
     cout << num[i] << ' ';
 }
@@ -23,6 +22,7 @@ int main(){
             scanf("%d" ,&num[i]);
         ///start LIS
         for (i = 0; i < num_len; i++){
+            // answer for LIS terminated in num[i]
             L[i] = 1;
             for (j = 0; j < i; j++){
                if (num[j] < num[i] && L[i] < L[j] + 1){

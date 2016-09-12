@@ -16,8 +16,7 @@ int LIS(){
 }
 int main(){
     cin>>n;
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;i++)
         scanf("%d", &a[i]);
-    }
     cout << LIS() << endl;
 }

@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-struct prime_table {
+struct Prime_table {
 
     int prime[1000000]={2,3,5,7};
     int sz=4;
+    // biggest prime < ub
     int ub=(1<<20);
 
     int check(int num){
@@ -13,7 +14,6 @@ struct prime_table {
         }
         return 1;
     }
-
     void buildprime(){
         int currentPrime=7;
         int j=4;
@@ -27,9 +27,4 @@ struct prime_table {
              }
         }
      }
-}p;
-int main() {
-    p.ub = (1<<20);
-    p.buildprime();
-    cout<< p.sz <<endl;
-}
+}ptable;

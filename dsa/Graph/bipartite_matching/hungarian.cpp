@@ -2,6 +2,8 @@
 // dfs  version below
 /* to do
 #define __maxNodes    
+num_left = ?
+*/
 struct Edge {
     int from;
     int to;

@@ -18,20 +18,17 @@ typedef pair<Point,Point> Line;
 #define y imag()
 
 // 兩向量叉積
-double cross(Point& a, Point& b)
-{
+double cross(Point& a, Point& b) {
     return a.x * b.y - a.y * b.x;
 }
 
 // 向量oa與向量ob進行叉積
-double cross(Point& o, Point& a, Point& b)
-{
+double cross(Point& o, Point& a, Point& b) {
     return (a.x-o.x) * (b.y-o.y) - (a.y-o.y) * (b.x-o.x);
 }
 
 // 多邊形面積
-double area(Polygon& p)
-{
+double area(Polygon& p) {
     double a = 0;
     int n = p.size();
     for (int i=0; i<n; ++i)
@@ -40,15 +37,13 @@ double area(Polygon& p)
 }
 
 // 兩線交點
-Point intersection(Point& a1, Point& a2, Point& b1, Point& b2)
-{
+Point intersection(Point& a1, Point& a2, Point& b1, Point& b2) {
     Point a = a2 - a1, b = b2 - b1, s = b1 - a1;
     return a1 + a * cross(b, s) / cross(b, a);
 }
 
 // 一個凸多邊形與一個半平面的交集
-Polygon halfplane_intersection(Polygon& p, Line& line)
-{
+Polygon halfplane_intersection(Polygon& p, Line& line) {
     Polygon q;
     Point p1 = line.first, p2 = line.second;
 
