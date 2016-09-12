@@ -1,30 +1,4 @@
-#include <bits/stdc++.h>
 #define REP(i,n) for ( int i=0; i<int(n); i++ )
-using namespace std;
-
-const int N=1010, eps=1e-8;
-
-struct P {
-    double x,y;
-    void read() {
-        scanf("%lf%lf",&x,&y);
-    }
-    void print() {
-        printf("%f %f\n", x, y);
-    }
-} p[N];
-
-bool operator <( P a, P b ) { return tie(a.x,a.y)<tie(b.x,b.y); }
-P operator +( P a, P b ) { return P{a.x+b.x,a.y+b.y}; }
-P operator -( P a, P b ) { return P{a.x-b.x,a.y-b.y}; }
-P operator *( double a, P b ) { return P{a*b.x,a*b.y}; }
-P operator /( P a, double b ) { return P{a.x/b,a.y/b}; }
-P& operator /=( P &a, double b ) { return a=a/b; }
-double operator *( P a, P b ) { return a.x*b.y-a.y*b.x; }
-double X( P o, P a, P b ) { return (a-o)*(b-o); }
-double dot( P a, P b ) { return a.x*b.x+a.y*b.y; }
-double dot( P o, P a, P b ) { return dot(a-o,b-o); }
-
 int n;
 void input() {
     scanf("%d",&n);
@@ -47,8 +21,7 @@ void build() {
 }
 
 P q1[N],q2[N],q[N];
-
-void solve() {
+void convex() {
     sort(p,p+n);
     int m1=0,m2=0;
     REP(i,n) {
@@ -60,24 +33,9 @@ void solve() {
     REP(i,m1) q[m++]=q1[i];
     for ( int i=m2-2; i>=1; i-- ) q[m++]=q2[i];
     q[m]=q[0];
-
-    int ans=0;
-    REP(i,m) {
-        bool good=1;
-        if ( dot(q[i],center,q[i+1])<0 ) good=0;
-        if ( dot(q[i+1],center,q[i])<0 ) good=0;
-        if ( good ) ans++;
-    }
-    printf("%d\n",ans);
+}
+void solve() {
+    convex();
+    // continue ...
 }
 
-int main() {
-    int t;
-    scanf("%d",&t);
-    while ( t-- ) {
-        input();
-        build();
-        solve();
-    }
-    return 0;
-}
