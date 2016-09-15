@@ -79,3 +79,4 @@ struct palindromic_tree{
         dfs(1);
     }
 }ptree;
+/** end template **/
