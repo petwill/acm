@@ -12,7 +12,7 @@ struct palindromic_tree{
     #define MAXN  105000
     //input
     char s[MAXN]; int len;
-    /* */
+    //
     struct node {
         int next[26];
         int len;
@@ -65,22 +65,17 @@ struct palindromic_tree{
         tree[2].len = 0; tree[2].sufflink = 1;
         tree[1].cnt = tree[2].cnt = 0;
     }
-    inline void count(){ /*cnt必須要在構造完後呼叫count()去計算*/
-        for(int i=num; i >= 1; i-- ){
-            tree[ tree[i].sufflink ].cnt += tree[i].cnt;
+    vector<int> adj[MAXN];
+    void dfs( int u ) {
+        for( auto it: adj[u] ) {
+            dfs(it);
+            tree[u].cnt += tree[it].cnt;
+         }
+    }
+    inline void count(){ //cnt必須要在構造完後呼叫count()去計算
+        for(int i=2; i<=num; i++) {
+           adj[tree[i].sufflink].pb(i);
         }
+        dfs(1);
     }
 }ptree;
-/** end template **/
-int main() {
-    int n, q; cin >> n >> q;
-    scanf("%s", ptree.s); ptree.len = strlen(ptree.s);
-    assert( n == ptree.len );
-    ptree.initTree();
-    for(int i = 0; i < n; i++) { ptree.addLetter( i ); }
-    ptree.count();
-    /** go through all palindromic substrings,[ tree[i].l .. tree[i].r ]
-    for(int i = 3; i <= ptree.num; i++) printf("%d %d\n", ptree.tree[i].l, ptree.tree[i].r);
-    **/
-   
-}
