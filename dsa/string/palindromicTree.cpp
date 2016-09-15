@@ -65,18 +65,11 @@ struct palindromic_tree{
         tree[2].len = 0; tree[2].sufflink = 1;
         tree[1].cnt = tree[2].cnt = 0;
     }
-    vector<int> adj[MAXN];
-    void dfs( int u ) {
-        for( auto it: adj[u] ) {
-            dfs(it);
-            tree[u].cnt += tree[it].cnt;
-         }
-    }
-    inline void count(){ //cnt必須要在構造完後呼叫count()去計算
-        for(int i=2; i<=num; i++) {
-           adj[tree[i].sufflink].pb(i);
+    inline void count() { // 需額外呼叫來計算
+        for(int i=num; i >= 1; i-- ){
+            tree[ tree[i].sufflink ].cnt += tree[i].cnt;
         }
-        dfs(1);
     }
+
 }ptree;
 /** end template **/
