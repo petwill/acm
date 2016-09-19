@@ -1,8 +1,8 @@
 /******
 給你一個序列 AA 包含 NN 個整數，你要對這個序列做以下二種操作：
 
-add l r dadd l r d：將屬於區間 [l,r][l,r] 的元素都加上 dd。
-query l rquery l r：詢問區間 [l,r][l,r] 的總和。
+add l r d：將屬於區間 [l,r][l,r] 的元素都加上 dd。
+query l r：詢問區間 [l,r][l,r] 的總和。
 ********/
 
 #include <bits/stdc++.h>

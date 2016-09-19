@@ -2,7 +2,6 @@
 #define MAXN 10
 using namespace std;
 
-///
 int main() {
     char infix[1000];
     stack<char> s;

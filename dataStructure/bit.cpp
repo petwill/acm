@@ -8,7 +8,6 @@ int n, a[100005];
 
 int bit[100005];
 //bit stands for binary indexed tree
-
 int sum(int i){
     int ret = 0;
     while(i > 0){
@@ -17,7 +16,6 @@ int sum(int i){
     }
     return ret;
 }
-
 void add(int i, int x){
     while(i <= n){
         bit[i] += x;
