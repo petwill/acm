@@ -4,19 +4,26 @@
 \contentsline {section}{\numberline {2}Graph}{1}
 \contentsline {subsection}{\numberline {2.1}HLD}{1}
 \contentsline {subsection}{\numberline {2.2}Hungarian}{2}
-\contentsline {subsection}{\numberline {2.3}KM}{2}
+\contentsline {subsection}{\numberline {2.3}KM}{3}
 \contentsline {subsection}{\numberline {2.4}Bi-vertex-connected Subgraph}{3}
 \contentsline {subsection}{\numberline {2.5}Bi-edge-connected Subgraph}{4}
-\contentsline {section}{\numberline {3}Data Structure}{4}
-\contentsline {subsection}{\numberline {3.1}Disjoint Set}{4}
-\contentsline {section}{\numberline {4}Math}{4}
-\contentsline {subsection}{\numberline {4.1}Prime Table}{4}
-\contentsline {subsection}{\numberline {4.2}Miller Rabin Prime Test}{5}
-\contentsline {subsection}{\numberline {4.3}Extended Euclidean Algorithm}{5}
-\contentsline {subsection}{\numberline {4.4}Gauss Elimination}{5}
-\contentsline {subsection}{\numberline {4.5}FFT}{6}
-\contentsline {subsection}{\numberline {4.6}NNT}{6}
-\contentsline {section}{\numberline {5}string}{6}
-\contentsline {subsection}{\numberline {5.1}Palindromic Tree}{6}
-\contentsline {subsection}{\numberline {5.2}Suffix Array}{7}
-\contentsline {subsection}{\numberline {5.3}Longest Palindromic Substring}{7}
+\contentsline {subsection}{\numberline {2.6}SCC}{4}
+\contentsline {subsection}{\numberline {2.7}Steiner Tree( PECaveros )}{5}
+\contentsline {subsection}{\numberline {2.8}Edmond's Matching Algorithm}{5}
+\contentsline {subsection}{\numberline {2.9}Tree Decomposition}{6}
+\contentsline {subsection}{\numberline {2.10}Tree Longest Path}{8}
+\contentsline {section}{\numberline {3}Flow}{8}
+\contentsline {subsection}{\numberline {3.1}Dinic Maxflow}{8}
+\contentsline {section}{\numberline {4}Data Structure}{8}
+\contentsline {subsection}{\numberline {4.1}Disjoint Set}{8}
+\contentsline {section}{\numberline {5}Math}{8}
+\contentsline {subsection}{\numberline {5.1}Prime Table}{8}
+\contentsline {subsection}{\numberline {5.2}Miller Rabin Prime Test}{8}
+\contentsline {subsection}{\numberline {5.3}Extended Euclidean Algorithm}{9}
+\contentsline {subsection}{\numberline {5.4}Gauss Elimination}{9}
+\contentsline {subsection}{\numberline {5.5}FFT}{10}
+\contentsline {subsection}{\numberline {5.6}NNT}{10}
+\contentsline {section}{\numberline {6}string}{10}
+\contentsline {subsection}{\numberline {6.1}Palindromic Tree}{10}
+\contentsline {subsection}{\numberline {6.2}Suffix Array}{11}
+\contentsline {subsection}{\numberline {6.3}Longest Palindromic Substring}{11}
