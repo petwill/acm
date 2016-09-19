@@ -20,11 +20,10 @@ void tarjan(int s, int p){
             tarjan(to, s);
             low[s] = min(low[s], low[to]);
             if( low[to] > dfn[s]) {
-                /** is cut_edge
-                pop stack 的過程也可以寫在這
-                但若寫在這而不是寫在後面，
-                最後(after tarjan)還要多判stack not empty的情況
-                
+                // is cut_edge
+                // pop stack 的過程也可以寫在這
+                // 但最後(after tarjan)還要多判stack not empty的情況
+                /*
                 if( low[to] > dfn[s]) {
 
                 in_cyc[bcnt] = st.top()!=to;

@@ -1,17 +1,39 @@
 \documentclass[10pt,twocolumn,oneside]{article}
-\setlength{\columnsep}{10pt}                        %兩欄模式的間距
-\setlength{\columnseprule}{0pt}
+\setlength{\columnsep}{10pt}                                                                    %兩欄模式的間距
+\setlength{\columnseprule}{0pt}                                                                %兩欄模式間格線粗細
+
+
+
 \usepackage{fontspec}                               %設定字體
 \usepackage{color}
-\usepackage{xeCJK} %xeCJK
-\usepackage[CheckSingle, CJKmath]{xeCJK}
 \usepackage[x11names]{xcolor}
-\usepackage{listings}                               %顯示code用的
+
+\usepackage{xeCJK}                              %xeCJK
+\setCJKmainfont{AR PL UMing CN}
+\usepackage{listings} 
+\usepackage{fancyhdr} 
+
+\usepackage{amsmath, courier, listings, fancyhdr, graphicx}
+\topmargin=0pt
+\headsep=5pt
+\textheight=780pt
+\footskip=0pt
+\voffset=-40pt
+\textwidth=545pt
+\marginparsep=0pt
+\marginparwidth=0pt
+\marginparpush=0pt
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\hoffset=-42pt
+
 \lstset{                                            % Code顯示
 language=C++,                                       % the language of the code
 basicstyle=\footnotesize\ttfamily,                      % the size of the fonts that are used for the code
 %numbers=left,                                      % where to put the line-numbers
 numberstyle=\footnotesize,                      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                                       % the step between two line-numbers. If it's 1, each line  will be numbered
+numbersep=5pt,                                      % how far the line-numbers are from the code
 backgroundcolor=\color{white},                  % choose the background color. You must add \usepackage{color}
 showspaces=false,                                   % show spaces adding particular underscores
 showstringspaces=false,                         % underline spaces within strings
@@ -28,11 +50,20 @@ commentstyle=\itshape\color{Red4},
 stringstyle=\itshape\color{Green4},
 }
 
+\begin{document}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyfoot[R]{\includegraphics[width=20pt]{ironwood.jpg}}
+\fancyhead[L]{National Taiwan University}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\contentsname}{Contents} 
 
-\scriptsize
+
+%\scriptsize
 \tableofcontents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{document}
+
 \newpage
 
 \section{Basic}
@@ -45,12 +76,13 @@ stringstyle=\itshape\color{Green4},
 
 \section{Graph}
 \subsection{HLD}
-\lstinputlisting{Graph/HLD/template.cpp}
-\subsection{bipartite graph matching}
+\lstinputlisting{graph/HLD/template.cpp}
 \subsection{Hungarian}
-\lstinputlisting{Graph/bipartite_matching/hungarian.cpp}
+\lstinputlisting{graph/bipartite_matching/hungarian.cpp}
 \subsection{KM}
-\lstinputlisting{Graph/bipartite_matching/km.cpp}
+\lstinputlisting{graph/bipartite_matching/km.cpp}
+\subsection{Bi-vertex-connected subgraph}
+\lstinputlisting{graph/}
 
 \section{Data Structure}
 \subsection{Disjoint Set}
@@ -58,14 +90,24 @@ stringstyle=\itshape\color{Green4},
 
 \section{Math}
 \subsection{Prime Table}
-\lstinputlisting{Math/primeTable.cpp}
-\subsection{Miller Rabin(prime test)}
-\lstinputlisting{Math/millerRabin.cpp}
+\lstinputlisting{math/primeTable.cpp}
+\subsection{Miller Rabin Prime Test}
+\lstinputlisting{math/millerRabin.cpp}
 \subsection{Extended Euclidean Algorithm}
-\lstinputlisting{Math/extgcd.cpp}
-\subsection{Matrix Fast Power}
-\lstinputlisting{Math/matrixFastPower.cpp}
+\lstinputlisting{math/extgcd.cpp}
 \subsection{Gauss Elimination}
-\lstinputlisting{Math/gaussElimination.cpp}
+\lstinputlisting{math/gaussElimination.cpp}
+\subsection{FFT}
+\lstinputlisting{math/fft.cpp}
+\subsection{NNT}
+\lstinputlisting{math/nnt.cpp}
+
+\section{string}
+\subsection{Palindromic Tree}
+\lstinputlisting{string/palindromicTree.cpp}
+\subsection{Suffix Array}
+\lstinputlisting{string/suffix_array.cpp}
+\subsection{Longest Palindromic Substring}
+\lstinputlisting{string/longest palindromic substring.cpp}
 
 \end{document}
