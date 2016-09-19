@@ -5,15 +5,18 @@
 \contentsline {subsection}{\numberline {2.1}HLD}{1}
 \contentsline {subsection}{\numberline {2.2}Hungarian}{2}
 \contentsline {subsection}{\numberline {2.3}KM}{2}
-\contentsline {section}{\numberline {3}Data Structure}{3}
-\contentsline {subsection}{\numberline {3.1}Disjoint Set}{3}
-\contentsline {section}{\numberline {4}Math}{3}
-\contentsline {subsection}{\numberline {4.1}Prime Table}{3}
-\contentsline {subsection}{\numberline {4.2}Miller Rabin Prime Test}{3}
-\contentsline {subsection}{\numberline {4.3}Extended Euclidean Algorithm}{4}
-\contentsline {subsection}{\numberline {4.4}Gauss Elimination}{4}
-\contentsline {subsection}{\numberline {4.5}FFT}{5}
-\contentsline {subsection}{\numberline {4.6}NNT}{5}
-\contentsline {section}{\numberline {5}string}{5}
-\contentsline {subsection}{\numberline {5.1}Palindromic Tree}{5}
-\contentsline {subsection}{\numberline {5.2}Suffix Array}{6}
+\contentsline {subsection}{\numberline {2.4}Bi-vertex-connected Subgraph}{3}
+\contentsline {subsection}{\numberline {2.5}Bi-edge-connected Subgraph}{4}
+\contentsline {section}{\numberline {3}Data Structure}{4}
+\contentsline {subsection}{\numberline {3.1}Disjoint Set}{4}
+\contentsline {section}{\numberline {4}Math}{4}
+\contentsline {subsection}{\numberline {4.1}Prime Table}{4}
+\contentsline {subsection}{\numberline {4.2}Miller Rabin Prime Test}{5}
+\contentsline {subsection}{\numberline {4.3}Extended Euclidean Algorithm}{5}
+\contentsline {subsection}{\numberline {4.4}Gauss Elimination}{5}
+\contentsline {subsection}{\numberline {4.5}FFT}{6}
+\contentsline {subsection}{\numberline {4.6}NNT}{6}
+\contentsline {section}{\numberline {5}string}{6}
+\contentsline {subsection}{\numberline {5.1}Palindromic Tree}{6}
+\contentsline {subsection}{\numberline {5.2}Suffix Array}{7}
+\contentsline {subsection}{\numberline {5.3}Longest Palindromic Substring}{7}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.9.17)  17 SEP 2016 21:41
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.9.17)  19 SEP 2016 23:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1161,6 +1161,35 @@ l.3 #
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
+(./graph/tarjan/割點and點雙連通分量/template.cpp
+
+LaTeX Warning: File `ironwood.jpg' not found on input line 58.
+
+! Unable to load picture or PDF file 'ironwood.jpg'.
+<to be read again> 
+                   }
+l.58 int 
+         Time;
+? 
+
+! Package graphics Error: Division by 0.
+
+See the graphics package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 int 
+         Time;
+? 
+File: ironwood.jpg Graphic file (type QTm)
+<use  "ironwood.jpg" >
+! Unable to load picture or PDF file 'ironwood.jpg'.
+<to be read again> 
+                   \GXT@clipend 
+l.58 int 
+         Time;
+? 
+[3]) (./graph/tarjan/橋and邊雙連通分量/template.cpp)
 
 ! Package Listings Error: File `dataStructure/dsj(.cpp)' not found.
 
@@ -1168,15 +1197,15 @@ Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: cpp)
 
 Enter file name: 
-(./math/primeTable.cpp) (./math/millerRabin.cpp
+(./math/primeTable.cpp
 
-LaTeX Warning: File `ironwood.jpg' not found on input line 16.
+LaTeX Warning: File `ironwood.jpg' not found on input line 26.
 
 ! Unable to load picture or PDF file 'ironwood.jpg'.
 <to be read again> 
                    }
-l.16     return 
-                ret;
+l.26                 sz-
+                        -;
 ? 
 
 ! Package graphics Error: Division by 0.
@@ -1185,29 +1214,26 @@ See the graphics package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.16     return 
-                ret;
+l.26                 sz-
+                        -;
 ? 
 File: ironwood.jpg Graphic file (type QTm)
 <use  "ironwood.jpg" >
 ! Unable to load picture or PDF file 'ironwood.jpg'.
 <to be read again> 
                    \GXT@clipend 
-l.16     return 
-                ret;
+l.26                 sz-
+                        -;
 ? 
-[3]) (./math/extgcd.cpp) (./math/gaussElimination.cpp
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[4]) (./math/millerRabin.cpp) (./math/extgcd.cpp) (./math/gaussElimination.cpp
 
-
-
-LaTeX Warning: File `ironwood.jpg' not found on input line 85.
+LaTeX Warning: File `ironwood.jpg' not found on input line 59.
 
 ! Unable to load picture or PDF file 'ironwood.jpg'.
 <to be read again> 
                    }
-l.85     //
-            Print input
+l.59         x[
+               i] = A[i][n]/A[i][i];
 ? 
 
 ! Package graphics Error: Division by 0.
@@ -1216,26 +1242,26 @@ See the graphics package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.85     //
-            Print input
+l.59         x[
+               i] = A[i][n]/A[i][i];
 ? 
 File: ironwood.jpg Graphic file (type QTm)
 <use  "ironwood.jpg" >
 ! Unable to load picture or PDF file 'ironwood.jpg'.
 <to be read again> 
                    \GXT@clipend 
-l.85     //
-            Print input
+l.59         x[
+               i] = A[i][n]/A[i][i];
 ? 
-[4]) (./math/fft.cpp) (./math/nnt.cpp) (./string/palindromicTree.cpp)
+[5]) (./math/fft.cpp) (./math/nnt.cpp) (./string/palindromicTree.cpp
 
-LaTeX Warning: File `ironwood.jpg' not found on input line 107.
+LaTeX Warning: File `ironwood.jpg' not found on input line 35.
 
 ! Unable to load picture or PDF file 'ironwood.jpg'.
 <to be read again> 
                    }
-l.107 \lstinputlisting{string/suffix_array.cpp}
-                                               
+l.35 ^^I}
+         
 ? 
 
 ! Package graphics Error: Division by 0.
@@ -1244,25 +1270,33 @@ See the graphics package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.107 \lstinputlisting{string/suffix_array.cpp}
-                                               
+l.35 ^^I}
+         
 ? 
 File: ironwood.jpg Graphic file (type QTm)
 <use  "ironwood.jpg" >
 ! Unable to load picture or PDF file 'ironwood.jpg'.
 <to be read again> 
                    \GXT@clipend 
-l.107 \lstinputlisting{string/suffix_array.cpp}
-                                               
+l.35 ^^I}
+         
 ? 
-[5] (./string/suffix_array.cpp)
+[6]) (./string/suffix_array.cpp)
 
-LaTeX Warning: File `ironwood.jpg' not found on input line 110.
+! Package Listings Error: File `string/longest palindromic substring(.cpp)' not
+ found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cpp)
+
+Enter file name: 
+
+LaTeX Warning: File `ironwood.jpg' not found on input line 116.
 
 ! Unable to load picture or PDF file 'ironwood.jpg'.
 <to be read again> 
                    }
-l.110 \end{document}
+l.116 \end{document}
                     
 ? 
 
@@ -1272,7 +1306,7 @@ See the graphics package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.110 \end{document}
+l.116 \end{document}
                     
 ? 
 File: ironwood.jpg Graphic file (type QTm)
@@ -1280,21 +1314,21 @@ File: ironwood.jpg Graphic file (type QTm)
 ! Unable to load picture or PDF file 'ironwood.jpg'.
 <to be read again> 
                    \GXT@clipend 
-l.110 \end{document}
+l.116 \end{document}
                     
 ? 
-[6] (./codebook.aux)
+[7] (./codebook.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20699 strings out of 493638
- 392792 string characters out of 6146796
- 992389 words of memory out of 5000000
- 23944 multiletter control sequences out of 15000+600000
+ 20796 strings out of 493638
+ 393869 string characters out of 6146796
+ 886389 words of memory out of 5000000
+ 24034 multiletter control sequences out of 15000+600000
  4206 words of font info for 30 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  48i,15n,72p,10366b,1715s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on codebook.pdf (6 pages).
+Output written on codebook.pdf (7 pages).
