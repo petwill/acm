@@ -6,6 +6,8 @@ My bug list
    or the function is never called..(stupid..
 4. multiple testcases => init again every time!!
 5. check typo with symmetrically ~~ (usually things like x, y, z or a, b, c ... single character typo
+6. when overloading operator for a struct, be careful !!
+   重載 +, 沒被用到的資料會被改到！！
 
 
 Todo List 
