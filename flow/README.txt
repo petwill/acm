@@ -20,7 +20,8 @@ Flow problems with boundary
    If all outgoing edges from S are full, then a feasible flow exists, it is the flow plus the original lower bounds.
    
 2.maximum flow in a network with both upper and lower capacity constraints, with source s and sink t : 
-
+  //referenced from the book 挑戰城市競賽acm-icpc and
+  //http://web.engr.illinois.edu/~jeffe/teaching/algorithms/2009/notes/18-maxflowext.pdf
   a. add edge (t,s) with capacity infinity. 
   // Binary search for the lower bound, check whether a feasible exists for a network WITHOUT source or sink ??
   
@@ -32,4 +33,5 @@ Flow problems with boundary
   d. if ss -> other verticles aren't all used ==> no feasible solution
   e. addEdge(ss, s, inf), addEdge(t, tt, inf), removeEdge(t, s) (not necessary)
   f. f2 = maxFlow of current graph
-  c. final answer will be f2 - sigma( lb of all edges ） 
+  c. final answer will be f2 - the sum of edge demands
+  
