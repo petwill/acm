@@ -1,3 +1,5 @@
+//http://acm.csie.org/ntujudge/problem.php?id=2581
+//French Fries Festival
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef DEBUG
