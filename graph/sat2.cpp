@@ -99,7 +99,7 @@ struct SAT2 {
         scc.G[a].pb ( b ^ 1 );
         scc.G[b].pb ( a ^ 1 );
     }
-    #define FOR(i,x,y) for(int i = (x) ; i <= (y) ; ++i)
+    #define FOR(i,x,y) for(int i = (x) ; i < (y) ; ++i)
     /// Out of all possible option, only one is true
     void atMostOneClause ( int a[], int n, int flag ) {
         if ( flag == 0 ) { /// At most one can be false
@@ -117,14 +117,12 @@ struct SAT2 {
     ///Send n, total number of nodes, after expansion
     bool possible( int n ) {
 
-        scc.tarjan( n+1 );
-
+        scc.tarjan( n );
         for(int i = 1; i < n; i+=2) {
             int a = i, b = i^1;
             ///Falls on same cycle a and !a.
             if ( scc.belong[a] == scc.belong[b] ) return false;
         }
-
         ///Valid solution exists
         return true;
     }
@@ -162,7 +160,6 @@ void buildGraph ( int b, int e ) {
         int y = sat2.convert( i + 1 );
         sat2.xorClause( x, y );
     }
-
     for ( int i = b; i <= e; i++ ) {
         for ( int j = i + 1; j <= e; j++ ) {
             ///Check if they overlap
@@ -179,8 +176,7 @@ void buildGraph ( int b, int e ) {
 
 void solve () {
 
-        int n;
-        scanf ( "%d", &n );
+        int n; scanf ( "%d", &n );
 
         ep.clear();
         for(int i = 0; i < n; i++) {
@@ -208,17 +204,9 @@ void solve () {
                 resR = r;
             }
         }
-
         printf ( "%d %d\n", resL+1, resR+1 );
-
-
 }
-
-
-
 int main () {
     int t;cin>>t;
-    while(t--)
-        solve();
-    return 0;
+    while(t--) solve();
 }
