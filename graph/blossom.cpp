@@ -13,7 +13,7 @@ int tail;
 int Start;
 int Finish;
 int link[N];     //表示哪个点匹配了哪个点
-int Father[N];   //这个就是增广路的Father……但是用起来太精髓了
+int Father[N];   //这个就是增广路的Father
 int Base[N];     //该点属于哪朵花
 int Q[N];
 bool mark[N];
@@ -111,6 +111,7 @@ void output(){
     for (int i=1;i<=n;i++)
       if (link[i]) cnt++;
     printf("%d\n",cnt);
+ 
     for (int i=1;i<=n;i++)
       if (!mark[i] && link[i]){
           mark[i]=true;
@@ -120,7 +121,7 @@ void output(){
 }
  
 int main(){
-//    freopen("input.txt","r",stdin);
+    //node indexed [ 1 .. n ]
     CreateGraph();
     Edmonds();
     output();
