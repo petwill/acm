@@ -1,5 +1,6 @@
 //http://acm.csie.org/ntujudge/problem.php?id=2581
 //French Fries Festival
+//dinic runs in O( V^2*E )
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef DEBUG
