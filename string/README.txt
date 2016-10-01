@@ -1,3 +1,4 @@
+//http://www.csie.ntnu.edu.tw/~u91029/StringMatching.html#3
 字串比對的策略：
 
 一、T與P的最長共同前綴（Longest Common Prefix）
@@ -8,6 +9,6 @@
 
 二、P本身的次長相同前綴後綴（Longest Proper Prefix-Suffix）（Border）
 　適用情況：P為定值，T為變動值。
-　單一字串匹配：Morris-Pratt Algorithm。
+　單一字串匹配：Morris-Pratt Algorithm ==> or kmp。
 　多重字串匹配：Aho-Corasick Algorithm。
 　特色：可以轉換成自動機。
