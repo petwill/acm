@@ -16,58 +16,61 @@
     //num(非必要) 表示所代表的回文子字串其後綴為回文字串的個數 <== not included
 **/
 struct palindromic_tree{
-	struct node{
-		int next[26],sufflink,len; /*這些是必要的元素*/
-		int cnt, num;          /*這些是額外維護的元素*/
-		node(int l=0):sufflink(0),len(l),cnt(0),num(0){
-			for(int i=0;i<26;++i)next[i]=0;
-		}
-	};
-	std::vector<node> St;
-	std::vector<char> s;
-	int last,n;
-	palindromic_tree():St(2),last(1),n(0){
-		St[0].sufflink=1;
-		St[1].len=-1;
-		s.push_back(-1);
-	}
-	inline void clear(){
-		St.clear();
-		s.clear();
-		last=1;
-		n=0;
-		St.push_back(0);
-		St.push_back(-1);
-		St[0].sufflink=1;
-		s.push_back(-1);
-	}
-	inline int get_sufflink(int x){
-		while(s[n-St[x].len-1]!=s[n])x=St[x].sufflink;
-		return x;
-	}
-	inline void add(int c){
-		s.push_back(c-='a');
-		++n;
-		int cur=get_sufflink(last);
-		if(!St[cur].next[c]){
-			int now=St.size();
-			St.push_back(St[cur].len+2);
-			St[now].sufflink=St[get_sufflink(St[cur].sufflink)].next[c];
-			/*不用擔心會找到空節點，由證明的過程可知*/
-			St[cur].next[c]=now;
-			St[now].num=St[St[now].sufflink].num+1;
-		}
-		last=St[cur].next[c];
-		++St[last].cnt;
-	}
-	inline void count(){/*cnt必須要在構造完後呼叫count()去計算*/
-		std::vector<node>::reverse_iterator i=St.rbegin();
-		for(;i!=St.rend();++i){
-			St[i->sufflink].cnt+=i->cnt;
-		}
-	}
-	inline int size(){/*傳回其不同的回文子串個數*/
-		return St.size()-2;
-	}
+    struct node{
+        int next[26],sufflink,len; /*這些是必要的元素*/
+        int l, r; // this node is s[ l .. r ]
+        int cnt, num;          /*這些是額外維護的元素*/
+        node(int l=0):sufflink(0),len(l),cnt(0),num(0){
+            for(int i=0;i<26;++i)next[i]=0;
+        }
+    };
+    std::vector<node> St;
+    std::string s; //current string [ 1 .. n ]
+    int last,n;
+    palindromic_tree():St(2),last(1),n(0){
+        St[0].sufflink=1;
+        St[1].len=-1;
+        s.push_back(-1);
+    }
+    inline void clear(){
+        St.clear();
+        s.clear();
+        last=1;
+        n=0;
+        St.push_back(0);
+        St.push_back(-1);
+        St[0].sufflink=1;
+        s.push_back(-1);
+    }
+    inline int get_sufflink(int x){
+        while( s[n-St[x].len-1] != s[n] ) x=St[x].sufflink;
+        return x;
+    }
+    inline void add(int c){
+        s.push_back(c-='a');
+        ++n;
+        int cur=get_sufflink(last);
+        if(!St[cur].next[c]){
+            int now=St.size();
+            St.push_back(St[cur].len+2);
+            St[now].sufflink=St[get_sufflink(St[cur].sufflink)].next[c];
+            /*不用擔心會找到空節點，由證明的過程可知*/
+            St[cur].next[c]=now;
+            St[now].num=St[St[now].sufflink].num+1;
+            St[now].l = n - St[now].len + 1, St[now].r = n;
+        }
+        last=St[cur].next[c];
+        ++St[last].cnt;
+    }
+    inline void count(){/*cnt必須要在構造完後呼叫count()去計算*/
+        std::vector<node>::reverse_iterator i=St.rbegin();
+        for(;i!=St.rend();++i) {
+            St[i->sufflink].cnt+=i->cnt;
+        }
+    }
+    inline int size(){/*傳回其不同的回文子串個數*/
+        return St.size()-2;
+    }
 }ptree;
+
 
