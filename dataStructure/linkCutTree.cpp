@@ -48,3 +48,26 @@ void Init() {
 	null = &nil; null->ch[0] = null->ch[1] = null->pre = null; null->rev = 0;
 	Rep(i, 1, N) { node &n = base[i]; n.rev = 0; n.pre = n.ch[0] = n.ch[1] = null; }
 }
+//compressed version
+//http://trinklee.blog.163.com/blog/static/238158060201521101957375/
+const int N=30010;
+int n,fa[N],son[N][2],val[N],siz[N],stmp,rev[N];
+#define swap(a,b) (stmp=a,a=b,b=stmp)
+void pu(int t){siz[t]=siz[son[t][0]]+siz[son[t][1]]+1;}
+void pd(int t){rev[t]?rev[t]=0,rev[son[t][0]]^=1,rev[son[t][1]]^=1,swap(son[t][0],son[t][1]),1:1;}
+bool nr(int t){return son[fa[t]][0]==t||son[fa[t]][1]==t;}
+void rtt(int t,int f=0,bool p=0){
+    p=son[f=fa[t]][1]==t,
+    fa[t]=fa[f],nr(f)?son[fa[f]][son[fa[f]][1]==f]=t:1,
+    (son[f][p]=son[t][!p])?fa[son[f][p]]=f:1,
+    pu(son[fa[f]=t][!p]=f);
+}
+void pv(int t){if(nr(t))pv(fa[t]);pd(t);}
+void splay(int t,int f=0){
+    for(pv(t);nr(t);rtt(t))nr(f=fa[t])?
+    rtt(son[f][1]==t^son[fa[f]][1]==f?t:f),1:1;pu(t);
+}
+void access(int t,int la=0){for(;t;splay(t),son[t][1]=la,la=t,t=fa[t]);}
+void makeroot(int t){access(t),splay(t),rev[t]^=1;}
+void link(int u,int v){makeroot(u),fa[u]=v;}
+void cut(int u,int v){makeroot(u),access(v),splay(v),son[v][0]=fa[u]=0;}
