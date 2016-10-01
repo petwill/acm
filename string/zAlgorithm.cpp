@@ -4,6 +4,8 @@
     z(i) 是指由 s[i] 開始的字串，與 s[0] 開始的字串可以匹配到多長。
     也就是說 s[0 ... z(i)-1] = s[i ... i+z(i)-1] 
 **/
+// get a practice here http://codeforces.com/blog/entry/3107
+
 #include <bits/stdc++.h>
 
 using namespace std;
