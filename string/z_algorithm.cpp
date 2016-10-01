@@ -1,11 +1,14 @@
+//z algorithm
+/**
+    定義一個函數 z() ， 
+    z(i) 是指由 s[i] 開始的字串，與 s[0] 開始的字串可以匹配到多長。
+    也就是說 s[0 ... z(i)-1] = s[i ... i+z(i)-1] 
+**/
 #include <bits/stdc++.h>
 
 using namespace std;
 string str;
-int fail[100000], z[100000];
-int len;
-char tmp[1000000];
-int ans;
+int z[100000];
 
 void build_z(){
     int L, R;
@@ -20,22 +23,15 @@ void build_z(){
         while(i + z[i] < len && str[i+z[i]] == str[0+z[i]])
             z[i]++;
 
-        if(i+z[i]-1>R) L = i, R = i+z[i]-1;
-
-        if(len%i == 0 && z[i]+i == len) {ans = i;break;}
+        if(i+z[i]-1>R) L = i, R = i+z[i]-1;   
     }
 }
 
 int main(){
     int T;cin>>T;
     while(T--){
-        scanf("%s" ,tmp);
-        len = strlen(tmp);
-        str = string(tmp);
-        //z algorithm
-        ans = len;
+        cin >> str ;
         build_z();
-        printf("%d\n", ans);
     }
     return 0;
 }
