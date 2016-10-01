@@ -19,13 +19,12 @@ void build_z(){
         if(i > R) z[i] = 0;
         else{
             int ip = i - L;
-            if(ip + z[ip] < z[L]) z[i] = z[ip];
+            if(ip + z[ip] < z[L] ) z[i] = z[ip];
             else z[i] = R - i + 1;
         }
-        while(i + z[i] < len && str[i+z[i]] == str[0+z[i]])
+        while( i + z[i] < len && str[ i+z[i] ] == str[ z[i] ] )
             z[i]++;
-
-        if(i+z[i]-1>R) L = i, R = i+z[i]-1;   
+        if( i + z[i] - 1 > R ) L = i, R = i + z[i] - 1;   
     }
 }
 
