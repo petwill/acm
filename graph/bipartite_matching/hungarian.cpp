@@ -1,5 +1,6 @@
 // edge and node index starting from 0
 // dfs  version below
+//complexity O ( V*E )
 /* to do
 #define __maxNodes    
 num_left = ?
