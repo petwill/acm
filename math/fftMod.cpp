@@ -1,52 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-#ifdef DEBUG
-    #define debug(...) printf(__VA_ARGS__)
-#else
-    #define debug(...) (void)0
-#endif
-#define mp make_pair
-#define pb push_back
-#define LL long long
-#define pii pair<int,int>
-#define PII pair<long long, long long>
-#define fi first
-#define se second
-#define all(x) (x).begin(),(x).end()
-#define SZ(x) ((int)(x).size())
-const int inf = 0x7fffffff; //beware overflow
-const LL INF = 0x7fffffffffffffff; //beware overflow
-#define mem(x, y) memset(x, (y), sizeof(x) );
-#define IOS ios_base::sync_with_stdio(0); cin.tie(0)
-template<typename A, typename B>
-ostream& operator <<(ostream &s, const pair<A,B> &p) {
-     return s<<"("<<p.first<<","<<p.second<<")";
-}
-template<typename T>
-ostream& operator <<(ostream &s, const vector<T> &c) {
-    s << "[ ";
-    for (auto it : c) s << it << " ";
-    s << "]";
-    return s;
-}
-template<typename T>
-ostream& operator << (ostream &o, const set<T> &st) {
-    o << "{";
-    for (auto it=st.begin(); it!=st.end(); it++) o << (it==st.begin() ? "" : ", ") << *it;
-    return o << "}";
-}
-template<typename T1, typename T2>
-ostream& operator << (ostream &o, const map<T1, T2> &mp) {
-    o << "{";
-    for (auto it=mp.begin(); it!=mp.end(); it++) {
-        o << (it==mp.begin()?"":", ") << it->fi << ":" << it->se;
-    }
-    o << "}";
-    return o;
-}
-
-
 struct Complex {
     double x , y;
     Complex (double _x = 0 , double _y = 0) {
@@ -70,14 +21,14 @@ struct Complex {
     }
 };
 const double pi = acos(-1.0);
-
-typedef vector<int> VEC;
-#define maxn (131075)
-int p[maxn];
-
 //fft with modulo, code referenced from the internet
+/*
+    fftMod::fftPrepare(len);
+    fftMod::convolution(res, le, ri, len, r-l);
+*/
 namespace fftMod{
     const int Mod = 1e9 + 7;
+    // to do
     const int N = 1 << 18;
     const int M = 32768;
     int p[N] , I[N] ;
@@ -146,26 +97,3 @@ namespace fftMod{
     }
 };
 
-inline VEC dac( int l, int r ) {
-    if( r-l == 1 )  return {1, p[l]};
-    int mid = (l+r)>>1;
-    VEC le = dac(l, mid), ri= dac(mid, r);
-    int mx = max(SZ(le), SZ(ri));
-    int len = 1;
-    while( len < mx*2 ) len <<= 1;
-    le.resize(len, 0);
-    ri.resize(len, 0);
-    vector<int> res(r-l+1, 0);
-    // convolution
-    fftMod::fftPrepare(len);
-    fftMod::convolution(res, le, ri, len, r-l);
-    return res;
-}
-int main() {
-    int n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &p[i]);
-    vector<int> ans = dac(0, n);
-    printf("0");
-    for(int p : ans ) printf(" %d", p);
-}
