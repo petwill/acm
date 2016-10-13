@@ -28,9 +28,9 @@ const double pi = acos(-1.0);
     fftMod::convolution(res, le, ri, len, r-l);
 */
 namespace fftMod{
-    const int Mod = 1e9 + 7;
-    // to do
     const int N = 1 << 18;
+    const int Mod = 1e9 + 7;
+    // to do, M should be about sqrt(Mod)
     const int M = 32768;
     int p[N] , I[N] ;
     int t1[N] , t2[N] , t3[N];
