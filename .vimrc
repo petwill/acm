@@ -18,25 +18,25 @@ fu! IoStream()
     call append(14, "#define all(x) (x).begin(),(x).end()")
     call append(15, "#define SZ(x) ((int)(x).size())")
 	call append(16, "const int inf = 0x7fffffff; //beware overflow")
-	call append(17, "const LL  INF = 0x7fffffffffffffff; //beware overflow")
-   	call append(18, "#define mem(x, y) memset(x, (y), sizeof(x) ); ")
+	call append(17, "const LL INF = 0x7fffffffffffffff; //beware overflow")
+    call append(18, "#define mem(x, y) memset(x, (y), sizeof(x) ); ")
     call append(19, "#define IOS ios_base::sync_with_stdio(0); cin.tie(0)")
     call append(20, "template<typename A, typename B>")
     call append(21, "ostream& operator <<(ostream &s, const pair<A,B> &p) {")
-    call append(22, "   return s<<\"(\"<<p.first<<\",\"<<p.second<<\")\";")
+    call append(22, "     return s<<\"(\"<<p.first<<\",\"<<p.second<<\")\";")
     call append(23, "}")
     call append(24, "template<typename T>")
     call append(25, "ostream& operator <<(ostream &s, const vector<T> &c) {")
-    call append(26, "   s << \"[ \";")
-    call append(27, "   for (auto it : c) s << it << \" \";")
-    call append(28, "   s << \"]\";")
-    call append(29, "   return s;")
+    call append(26, "    s << \"[ \";")
+    call append(27, "    for (auto it : c) s << it << \" \";")
+    call append(28, "    s << \"]\";")
+    call append(29, "    return s;")
     call append(30, "}")
     call append(31, "template<typename T>")
     call append(32, "ostream& operator << (ostream &o, const set<T> &st) {")
-    call append(33, "   o << \"{\";")
-    call append(34, "   for (auto it=st.begin(); it!=st.end(); it++) o << (it==st.begin() ? \"\" : \", \") << *it;")
-    call append(35, "   return o << \"}\";")
+    call append(33, "    o << \"{\";")
+    call append(34, "    for (auto it=st.begin(); it!=st.end(); it++) o << (it==st.begin() ? \"\" : \", \") << *it;")
+    call append(35, "    return o << \"}\";")
     call append(36, "}")
     call append(37, "template<typename T1, typename T2>")
     call append(38, "ostream& operator << (ostream &o, const map<T1, T2> &mp) {")
@@ -49,8 +49,7 @@ fu! IoStream()
     call append(45, "}")
 	call append(46, "#define maxn")
 	call append(47, "int main() {")
-    call append(49, "    return 0;")
-    call append(50, "}")
+    call append(48, "}")
     endif
 endfu
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
@@ -104,7 +103,7 @@ endif
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
+source /etc/vim/vimrc.local
 endif
 set encoding=utf-8
 set fileencoding=utf-8
@@ -136,7 +135,8 @@ set pastetoggle=<F2>
 nmap <C-S-c> 0i//<Esc>
 imap <C-S-c> jj<C-S-c>
 nmap <C-S-x> 0xx
-imap <C-S-x> jj<C-S-x> 
+imap <C-S-x> jj<C-S-x>
+nmap co :%y+<CR>
 
 nmap <bslash>p :set paste!<CR>
 nmap <bslash>x mzHmx:silent! :%s/[ \t][ \t]*$//g<CR>`xzt`z
@@ -150,12 +150,14 @@ autocmd FileType c imap <F9> <ESC>\x:w<CR>:!gcc -O2 -Wall -std=c99 % -o %<<CR>
 autocmd FileType c imap <F11> <ESC>\x:w<CR>:!./%<<CR>
 autocmd FileType c imap <F12> <ESC>\x:w<CR>:!gcc -O2 -Wall -std=c99 % -o %< && ./%<<CR>
 
-autocmd FileType cpp nmap ff <ESC>\x:w<CR>:!./%<  
-autocmd FileType cpp nmap <F9> <ESC>\x:w<CR>:!g++ -D DEBUG -g -std=c++11 % -o %<<CR>
-autocmd FileType cpp nmap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %< && ./%<<CR>
-autocmd FileType cpp imap ff <ESC>\x:w<CR>:!./%<  
-autocmd FileType cpp imap <F9> <ESC>\x:w<CR>:!g++ -D DEBUG -g -std=c++11 % -o %<<CR>  
-autocmd FileType cpp imap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -std=c++11 % -o %< && ./%<<CR>
+autocmd FileType cpp nmap ff :!time ./%<
+autocmd FileType cpp nmap <F5>  :!time ./%<<CR>
+autocmd FileType cpp nmap <F6>  :!time ./%<  < in<CR>
+autocmd FileType cpp nmap <F9> <ESC>\x:w<CR>:!g++ -D DEBUG -g -std=c++14 % -o %<<CR>
+autocmd FileType cpp nmap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -D DEBUG -g -std=c++14 % -o %< && time ./%<<CR>
+
+autocmd FileType cpp imap <F9> <ESC>\x:w<CR>:!g++ -D DEBUG -g -std=c++14 % -o %<<CR>
+autocmd FileType cpp imap <F12> <ESC>\x:w<CR>:!g++ -O2 -Wall -D DEBUG -g -std=c++14 % -o %< && time ./%<<CR>
 
 autocmd FileType python nmap <F11> <ESC>\x:w<CR>:!./%<CR>
 autocmd FileType python nmap <F12> <ESC>\x:w<CR>:!./%<CR>
@@ -170,7 +172,7 @@ autocmd FileType tex imap <F12> <ESC>\x:w<CR>:!xelatex %<CR>
 set fdm=indent
 set foldlevel=0
 set foldnestmax=1
-set foldminlines=7
+set foldminlines=1
 
 syntax on
 execute pathogen#infect()
@@ -184,7 +186,7 @@ au FocusGained * :set relativenumber
 
 function! NumberToggle()
   if(&relativenumber == 1)
-    set norelativenumber 
+    set norelativenumber
   else
     set relativenumber
   endif
