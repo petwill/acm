@@ -10,7 +10,6 @@ struct P {
         printf("%f %f\n", x, y);
     }
 } p[N];
-#define double double
 bool operator <( P a, P b ) { return tie(a.x,a.y)<tie(b.x,b.y); }
 P operator +( P a, P b ) { return P{a.x+b.x,a.y+b.y}; }
 P operator -( P a, P b ) { return P{a.x-b.x,a.y-b.y}; }
