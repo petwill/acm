@@ -8,6 +8,8 @@ My bug list
 5. check typo with symmetrically ~~ (usually things like x, y, z or a, b, c ... single character typo
 6. when overloading operator for a struct, be careful !!
    重載 +, 沒被用到的資料會被改到！！
+   when overloading, be careful that 運算元 and 運算子的順序是對的！！ 
+   有時候可以放錯順序還可以compile, but 不是我們要的 !!
 
 
 Todo List 
