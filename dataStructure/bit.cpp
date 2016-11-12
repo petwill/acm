@@ -8,6 +8,7 @@ int n, a[100005];
 
 int bit[100005];
 //bit stands for binary indexed tree
+// bit[ 1 .. n ]å¼çœŸæ­£æœ‰å­˜ç›´çš„åœ°æ–¹
 int sum(int i){
     int ret = 0;
     while(i > 0){
@@ -23,8 +24,8 @@ void add(int i, int x){
     }
 }
 
-//µ¹©w1~nªº±Æ¦C
-//ªwªj±Æ§Çªº¥æ´«¦¸¼Æ
+//çµ¦å®š1~nçš„æ’åˆ—
+//æ³¡æ²«æ’åºçš„äº¤æ›æ¬¡æ•¸
 void solve(){
     LL ans = 0;
     for(int j = 0; j < n; j++){
