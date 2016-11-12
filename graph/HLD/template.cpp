@@ -99,6 +99,7 @@ struct Tree{
         }
     }
     void build_link(int x,int top){
+        //be careful, timer affects the starting index of the segment tree
         link[x] = timer++;/*記錄x點的時間戳*/
         link_top[x] = top;
         if(max_son[x] != -1)
