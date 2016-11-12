@@ -47,12 +47,12 @@ struct Tree{
     #define MAXN 100010
     #define maxm (maxn<<1)
     int n;
-    struct edge { int u, v; };
-    vector<edge> e;
-    void addedge(int x, int y) {
+    struct Edge { int u, v; };
+    vector<Edge> e;
+    void addEdge(int x, int y) {
         G[x].pb( SZ(e) );
         G[y].pb( SZ(e) );
-        e.pb( edge{x, y}  );
+        e.pb( Edge{x, y}  );
     }
     int siz[MAXN],max_son[MAXN],pa[MAXN],dep[MAXN];
     /*size of subtree、index of max_son, parent index、depth*/
