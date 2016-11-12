@@ -5,6 +5,9 @@
     Because the immediate dominator is unique, it is a tree.
     The start node is the root of the tree.
 **/
+// idom[n] is the unique node that strictly dominates n but does
+// not strictly dominate any other node that strictly dominates n. 
+// idom[n] = 0 if n is entry or the entry cannot reach n.
 #include <bits/stdc++.h>
 using namespace std;
 const int maxn = 200010;
