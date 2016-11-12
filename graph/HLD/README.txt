@@ -11,7 +11,8 @@
     link-top[]，link[]可在第二遍dfs中求出来。具体过程看代码吧。
 
     link[root] = 1,  link[ 1..n ] = permutation of [1..n]
-
+    HLD for operation on nodes =>
+        seg_arr[ 0 .. n ) is used
     HLD for operation on edges =>
         seg_arr[0] won't be queried cause this edge actually doesn't exist
         seg_arr[ 1..n ) is actually used
