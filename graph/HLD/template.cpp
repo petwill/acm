@@ -64,6 +64,7 @@ struct Tree{
         n = N;
         e.clear();
         for(int i = 1; i <= n; i++) G[i].clear();
+        timer = 0;
     }
     void find_max_son(int x){
         siz[x]=1;
