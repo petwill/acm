@@ -1,5 +1,5 @@
-//http://acm.csie.org/ntujudge/contest_view.php?contest_id=465&id=2658
-// template referenced from the internet
+//http://acm.csie.org/ntujudge/contest_view.php?id=2755&contest_id=480
+// template PEC
 /**
     A dominator tree is a tree where each node's children are those nodes it immediately dominates.
     Because the immediate dominator is unique, it is a tree.
@@ -7,96 +7,128 @@
 **/
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long LL;
-typedef vector<int> VI;
-typedef pair<int, int> PII;
+const int maxn = 200010;
+struct DominatorTree{
+#define REP(i,s,e) for(int i=(s);i<=(e);i++)
+#define REPD(i,s,e) for(int i=(s);i>=(e);i--)
+  int n , m , s;
+  vector< int > g[ maxn ] , pred[ maxn ];
+  vector< int > cov[ maxn ];
+  int dfn[ maxn ] , nfd[ maxn ] , ts;
+  int par[ maxn ];
+  int sdom[ maxn ] , idom[ maxn ];
+  int mom[ maxn ] , mn[ maxn ];
 
-const int MAXN = 200000 + 10;
-namespace DominatorTree {
-  int dfn[MAXN], pre[MAXN], pt[MAXN], sz;
-  int semi[MAXN], dsu[MAXN], idom[MAXN], best[MAXN];
-  int get(int x) {
-    if (x == dsu[x]) return x;
-    int y = get(dsu[x]);
-    if (semi[best[x]] > semi[best[dsu[x]]]) best[x] = best[dsu[x]];
-    return dsu[x] = y;
+  inline bool cmp( int u , int v )
+  { return dfn[ u ] < dfn[ v ]; }
+
+  int eval( int u ){
+    if( mom[ u ] == u ) return u;
+    int res = eval( mom[ u ] );
+    if(cmp( sdom[ mn[ mom[ u ] ] ] , sdom[ mn[ u ] ] ))
+      mn[ u ] = mn[ mom[ u ] ];
+    return mom[ u ] = res;
   }
-  void dfs(int u, const VI succ[]) {
-    dfn[u] = sz; pt[sz ++] = u;
-    for (auto &v: succ[u]) if ( dfn[v] == -1 ) {
-      dfs(v, succ); pre[dfn[v]] = dfn[u];
+
+  void init( int _n , int _m , int _s ){
+    ts = 0; n = _n; m = _m; s = _s;
+    REP( i, 1, n ) g[ i ].clear(), pred[ i ].clear();
+  }
+  void addEdge( int u , int v ){
+    g[ u ].push_back( v );
+    pred[ v ].push_back( u );
+  }
+  void dfs( int u ){
+    ts++;
+    dfn[ u ] = ts;
+    nfd[ ts ] = u;
+    for( int v : g[ u ] ) if( dfn[ v ] == 0 ){
+      par[ v ] = u;
+      dfs( v );
     }
   }
-  void tarjan(const VI pred[], VI dom[]) {
-    for (int j = sz - 1, u; u = pt[j], j > 0; -- j) {
-      for (auto &tv: pred[u]) if ( dfn[tv] != -1) {
-        int v = dfn[tv]; get(v);
-        if (semi[best[v]] < semi[j]) semi[j] = semi[best[v]];
+  void build(){
+    REP( i , 1 , n ){
+      dfn[ i ] = nfd[ i ] = 0;
+      cov[ i ].clear();
+      mom[ i ] = mn[ i ] = sdom[ i ] = i;
+    }
+    dfs( s );
+    REPD( i , n , 2 ){
+      int u = nfd[ i ];
+      if( u == 0 ) continue ;
+      for( int v : pred[ u ] ) if( dfn[ v ] ){
+        eval( v );
+        if( cmp( sdom[ mn[ v ] ] , sdom[ u ] ) )
+          sdom[ u ] = sdom[ mn[ v ] ];
       }
-      dom[semi[j]].push_back(j);
-      int x = dsu[j] = pre[j];
-      for (auto &z: dom[x]) {
-        get(z);
-        if (semi[best[z]] < x) idom[z] = best[z];
-        else idom[z] = x;
+      cov[ sdom[ u ] ].push_back( u );
+      mom[ u ] = par[ u ];
+      for( int w : cov[ par[ u ] ] ){
+        eval( w );
+        if( cmp( sdom[ mn[ w ] ] , par[ u ] ) )
+          idom[ w ] = mn[ w ];
+        else idom[ w ] = par[ u ];
       }
-      dom[x].clear();
+      cov[ par[ u ] ].clear();
     }
-    for (int i = 1; i < sz; ++ i) {
-      if (semi[i] != idom[i]) idom[i] = idom[idom[i]];
-      dom[idom[i]].push_back(i);
+    REP( i , 2 , n ){
+      int u = nfd[ i ];
+      if( u == 0 ) continue ;
+      if( idom[ u ] != sdom[ u ] )
+        idom[ u ] = idom[ idom[ u ] ];
     }
   }
-  void build(int n, int s, const VI succ[], const VI pred[], VI dom[]) {
-    //init
-    for (int i = 0; i < n; ++ i) {
-      dfn[i] = -1; dom[i].clear();
-      dsu[i] = best[i] = semi[i] = i;
+} domT;
+
+int up[maxn][30];
+int timer;
+int c[maxn], cmn[maxn];
+int tin[maxn], tout[maxn];
+vector<int> dom[maxn];
+
+void dfs(int u, int p = 1, int mn = 1e9) {
+    cmn[u] = min( mn, c[u] );
+    tin[u] = timer ++;
+    up[u][0] = p;
+    for(int i = 1; i < 23; i++)
+        up[u][i] = up[ up[u][i-1] ][ i-1 ];
+    for (int v: dom[u])
+        dfs(v, u, cmn[u]);
+    tout[u] = timer ++;
+}
+bool upper (int a, int b) {
+    return tin [a] <= tin [b] && tout [a] >= tout [b];
+}
+int lca (int a, int b) {
+    if (upper (a, b)) return a;
+    if (upper (b, a)) return b;
+    for (int i = 22; i >= 0; --i){
+        if (! upper (up[a][i], b))
+            a = up[a][i];
     }
-    sz = 0; dfs(s, succ); tarjan(pred, dom);
-  }
+    return up [a][0];
 }
-using DominatorTree::dfn;
-
-VI pred[MAXN], succ[MAXN], dom[MAXN];
-int a[MAXN], b[MAXN], st[MAXN], ed[MAXN];
-int n, m, sz;
-
-void dfs(int u) {
-  st[u] = sz ++;
-  for (auto &v: dom[u]) dfs(v);
-  ed[u] = sz ++;
-}
-
 int main() {
-  while (scanf("%d%d", &n, &m) == 2) {
-    for (int i = 0; i < n + m; ++ i) {
-      pred[i].clear(); succ[i].clear();
+    int n,m;cin>>n>>m;
+    domT.init(n, m, 1);
+    for(int i=0;i<m;i++) {
+        int u,v;scanf("%d %d", &u, &v);
+        domT.addEdge(u, v);
     }
-    for (int i = 0; i < m; ++ i) {
-      int u, v; scanf("%d%d", &u, &v);
-      a[i] = -- u; b[i] = -- v;
-      succ[u].push_back(v);
-      pred[v].push_back(u);
+    domT.build();
+    // construct dom tree from idom
+    for(int i=2;i<=n;i++) dom[ domT.idom[i] ].push_back(i);
+    for(int i=1;i<=n;i++) scanf("%d", &c[i]);
+    timer=1;dfs(1);
+    int q;cin>>q;
+    while(q--) {
+        int k;cin>>k;
+        int cur; scanf("%d", &cur);
+        for(int i = 1; i < k; i++) {
+            int x; scanf("%d", &x);
+            cur = lca( cur, x);
+        }
+        cout << cmn[cur] << endl;
     }
-    // 0 as the starting point
-    DominatorTree::build(n, 0, succ, pred, dom);
-    // result returns as a tree, stored in dom
-    // zero-based
-    sz = 0; dfs(0);
-    VI ret;
-    for (int i = 0; i < m; ++ i) {
-      int u = dfn[a[i]], v = dfn[b[i]];
-      if (u == -1 || v == -1) continue;
-      //if v dominates u ==> not a useful road
-      if (st[v] <= st[u] && ed[v] >= ed[u]) continue;
-      ret.push_back(i + 1);
-    }
-
-    printf("%d\n", (int)ret.size());
-    for (auto &x: ret) printf("%d ", x);
-    puts("");
-  }
-  return 0;
 }
-
