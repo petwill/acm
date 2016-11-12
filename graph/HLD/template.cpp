@@ -131,7 +131,7 @@ struct Tree{
     }
     
     int modify(int a,int b, int c){
-
+        //modify path a to b
         int ta=link_top[a], tb=link_top[b];
         while(ta != tb){
             if(dep[ta]<dep[tb]){
@@ -154,7 +154,7 @@ struct Tree{
             seg.modify(1, 1, n, link[ max_son[a] ], link[b]+1, c);
         }
     }
-    /*
+    /* recursive version of modify
     void modify(int a, int b, int c) {
         if( a==b ) return;
         if( link_top[a] == link_top[b]) {
