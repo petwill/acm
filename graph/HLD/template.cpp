@@ -56,7 +56,7 @@ struct Tree{
     }
     int siz[MAXN],max_son[MAXN],pa[MAXN],dep[MAXN];
     /*size of subtree、index of max_son, parent index、depth*/
-    int link_top[MAXN],link[MAXN],Time;
+    int link_top[MAXN],link[MAXN],timer;
     /*chain top、index in segtree、time stamp*/
     std::vector<int >G[MAXN];
 
@@ -80,7 +80,7 @@ struct Tree{
         }
     }
     void build_link(int x,int top){
-        link[x] = ++Time;/*記錄x點的時間戳*/
+        link[x] = ++timer;/*記錄x點的時間戳*/
         link_top[x] = top;
         if(max_son[x] == -1)return;
         build_link( max_son[x], top);/*優先走訪最大孩子*/
