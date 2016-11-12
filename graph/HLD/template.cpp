@@ -115,7 +115,8 @@ struct Tree{
             a = pa[ta];
             ta = link_top[a];
         }
-        if( a == b ) return ret;
+        //a, b are on the same chain
+        if( a == b ) ; // interval [ link[a], link[a] ]
         else {
             if(dep[a]>dep[b])
                 swap(a,b);
