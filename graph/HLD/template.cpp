@@ -106,12 +106,7 @@ struct Tree{
 
         for(int e_ind : G[x]) {
             int v = e[e_ind].u == x ? e[e_ind].v : e[e_ind].u ;
-
-            if( v == pa[x] ) {
-                seg_arr[ link[x] ] = e[e_ind].c;
-            }
             if( v == max_son[x] || v == pa[x] )continue;
-            // edge from x => v
             build_link(v, v);
         }
     }
