@@ -20,7 +20,7 @@ struct SuffixArray{
     }
     // 用于比较第一关键字与第二关键字,
     // 比较特殊的地方是,预处理的时候,r[n]=0(小于前面出现过的字符)
-    int wa[N],wb[N],ws[N],wv[N];
+    int wa[N],wb[N],ws[128],wv[N];
     int r[N], sa[N];
     int Rank[N], lcp[N];
     void DA(int n,int m){ //此处n比输入的n要多1，为人工添加的一个字符，用于避免CMP时越界
