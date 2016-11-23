@@ -130,9 +130,6 @@ int n;
 
 int main() {
     n = getint();
-    for(int i=0;i<n;i++) a[i]=getint();
-
     tree.init(n);
-    //tree.addEdge();
     tree.HLD();
 }
