@@ -1,4 +1,4 @@
-//Greatest graph
+//we can reference the problem Greatest graph
 ///http://acm.csie.org/ntujudge/problemdata/2582.pdf
 //this template operate on edges
 #define maxn 100005
