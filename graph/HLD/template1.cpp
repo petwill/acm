@@ -1,3 +1,4 @@
+// this HLD operate on nodes
 #define maxn 200005
 struct segment_tree{
     #define right(x) x << 1 | 1
@@ -47,13 +48,10 @@ struct segment_tree{
 struct Tree{
     segment_tree seg;
     int n;
-    struct Edge { int u, v, c; };
-    vector<Edge> e;
-    std::vector<int >G[maxn];
+    std::vector<int> G[maxn];
     void addEdge(int x, int y, int c=0) {
-        G[x].pb( SZ(e) );
-        G[y].pb( SZ(e) );
-        e.pb( Edge{x, y, c}  );
+        G[x].pb(y);
+        G[y].pb(x);
     }
     int siz[maxn],max_son[maxn],pa[maxn],dep[maxn];
     /*size of subtree、index of max_son, parent index、depth*/
@@ -61,15 +59,14 @@ struct Tree{
     /*chain top、index in segtree、time stamp*/
     void init(int N) {
         seg.init();
-        n = N; e.clear();
+        n = N;
         for(int i = 0; i < n; i++) G[i].clear();
         timer=0; pa[0] = 0; dep[0] = 0;
     }
     void find_max_son(int x){
         siz[x]=1;
         max_son[x]=-1;
-        for(int e_ind : G[x]) {
-            int v = e[e_ind].u == x ? e[e_ind].v : e[e_ind].u ;
+        for(int v : G[x]) {
             if( v == pa[x] )continue;
             pa[v] = x; dep[v] = dep[x] + 1;
             find_max_son(v);
@@ -85,8 +82,7 @@ struct Tree{
         if(max_son[x] != -1)
             build_link( max_son[x], top);/*優先走訪最大孩子*/
 
-        for(int e_ind : G[x]) {
-            int v = e[e_ind].u == x ? e[e_ind].v : e[e_ind].u ;
+        for(int v : G[x]) {
             if( v == max_son[x] || v == pa[x] )continue;
             build_link(v, v);
         }
@@ -131,5 +127,9 @@ int n;
 int main() {
     n = getint();
     tree.init(n);
+    for(int i = 1; i < n; i++) 
+        tree.addEdge(p[i], i);
     tree.HLD();
+    // query using tree.seg.query( tree.link[index] )
 }
+
