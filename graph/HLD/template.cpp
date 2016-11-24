@@ -1,3 +1,6 @@
+//Greatest graph
+///http://acm.csie.org/ntujudge/problemdata/2582.pdf
+//this template operate on edges
 #define maxn 100005
 struct segment_tree{
     #define right(x) x << 1 | 1
@@ -99,7 +102,6 @@ struct Tree{
         }
     }
     void build_link(int x,int top){
-        //be careful, timer affects the starting index of the segment tree
         link[x] = timer++;/*記錄x點的時間戳*/
         link_top[x] = top;
         if(max_son[x] != -1)
@@ -107,7 +109,12 @@ struct Tree{
 
         for(int e_ind : G[x]) {
             int v = e[e_ind].u == x ? e[e_ind].v : e[e_ind].u ;
+
+            if( v == pa[x] ) {
+                seg_arr[ link[x] ] = e[e_ind].c;
+            }
             if( v == max_son[x] || v == pa[x] )continue;
+            // edge from x => v
             build_link(v, v);
         }
     }
@@ -127,7 +134,7 @@ struct Tree{
     }
     
     int modify(int a,int b, int c){
-        //modify path a to b
+
         int ta=link_top[a], tb=link_top[b];
         while(ta != tb){
             if(dep[ta]<dep[tb]){
@@ -150,7 +157,7 @@ struct Tree{
             seg.modify(1, 1, n, link[ max_son[a] ], link[b]+1, c);
         }
     }
-    /* recursive version of modify
+    /*
     void modify(int a, int b, int c) {
         if( a==b ) return;
         if( link_top[a] == link_top[b]) {
@@ -174,3 +181,27 @@ struct Tree{
         build_link(1, 1);
     }
 }tree;
+
+
+int main() {
+    int T;cin>>T;
+    while(T--) {
+        int n,m ;
+        scanf("%d %d",&n, &m);
+        int ans = 0;
+        tree.init(n);
+        for(int i=0;i<n-1;i++) {
+            int a, b, c;
+            scanf("%d%d%d",&a,&b,&c);
+            //a--, b--; be careful here
+            tree.addEdge(a, b, c);
+            ans += c;
+        }
+        tree.HLD();
+
+        tree.seg.arr = seg_arr;
+        tree.seg.build(1, 1, n);
+
+    }
+    return 0;
+}
