@@ -17,16 +17,16 @@ double check(double x,double y){
     return ans;
 }
 int main(){
-    scanf("%*d");
-    while(~scanf("%d",&n)){
-        F(n)scanf("%d%d",X+i,Y+i);
+
+    while(~scanf("%d",&n) ) {
+        F(n) scanf("%d%d",X+i,Y+i);
         double x=0,y=0,tx,ty,tans,l=10000,ans;
         ans=check(x,y);
-        while(l>1e-4){
+        while(l>1e-4) {
             int tmp=rand();
             tx=x+l*cos(tmp);ty=y+l*sin(tmp);
             tans=check(tx,ty);
-            if(tans<ans)ans=tans,x=tx,y=ty;
+            if(tans<ans) ans=tans,x=tx,y=ty;
             else l*=0.9;
         }
         printf("%.9f\n",2*ans);
@@ -79,7 +79,7 @@ double check(V s1,V s2){
 int main(){
     scanf("%d",&n);
     while(n--){
-        F(4)scanf("%lf%lf",&v[i].x,&v[i].y);
+        F(4) scanf("%lf%lf",&v[i].x,&v[i].y);
         double ttans,tans,ans,l1=10000,l2;
         V s1=(V){0,0},s2=(V){0,0},ts1,ts2,tmp;
         ans=check(s1,s2);
