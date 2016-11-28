@@ -1,61 +1,58 @@
 #include <bits/stdc++.h>
-#define LL long long
-#define maxn 10002
-
 using namespace std;
+#define LL long long
+#define maxn 100020
 
-int N, M, E;
-//int adj[maxn][maxn];
-int par[maxn], r[maxn];
+inline LL getint(){
+   LL _x=0,_tmp=1; char _tc=getchar();
+   while( (_tc<'0'||_tc>'9')&&_tc!='-' ) _tc=getchar();
+   if( _tc == '-' ) _tc=getchar() , _tmp = -1;
+   while(_tc>='0'&&_tc<='9') _x*=10,_x+=(_tc-'0'),_tc=getchar();
+   return _x*_tmp;
+}
+
 struct edge {
     int u, v;
     long long cost;
-}e[100005];
+}e[5*maxn];
 
 
-void init() {
-    for(int i=1;i<=N;i++)
-        par[i] = i, r[i] = 0;
+int pa[maxn], Rank[maxn];
+void init(int V) {
+    for(int i=0; i<V; i++) {
+        pa[i] = i;
+        Rank[i] = 0;
+    }
+} int find(int x) {
+    return x == pa[x] ? x : pa[x] = find(pa[x]);
 }
-int Find(int x){
-    return (x==par[x])?x:par[x]=Find(par[x]);
-}
-void unite(int x, int y){
-    x = Find(x);
-    y = Find(y);
-    if(x == y) return;
-    if(r[x] < r[y])
-        par[x] = y;
-    else {
-        par[y] = x;
-        if(r[x] == r[y]) r[x]++;
+
+int unite(int x, int y) {
+    x = find(x), y = find(y);
+    if(x != y){
+        if(Rank[x] < Rank[y]) {
+            pa[x] = y;
+            return y;
+        }
+        else{
+            pa[y] = x;
+            if(Rank[x] == Rank[y]) Rank[x] ++;
+            return x;
+        }
     }
 }
-bool same(int x,int y){
-    return Find(x) == Find(y);
-}
 
-void addedge(int a, int b, int c){
-    /*if(adj[a][b]!=-1){
-        if(e[adj[a][b]].cost > (LL)c)
-            e[adj[a][b]].cost = c;
-    }
-    */
-        //adj[a][b] = adj[b][a] = E;
-        e[E].u = a;
-        e[E].v = b;
-        e[E].cost = (LL)c;
-        E++;
-
+bool same(int x, int y) {
+    return find(x) == find(y);
 }
 bool cmp(const edge& e1, const edge& e2){
     return e1.cost < e2.cost;
 }
-LL kruskal(){
-    init();
-    sort(e, e+E, cmp);
+LL kruskal(int n, int m){
+    init(n);
+    sort(e, e+m, cmp);
     LL res = 0;
-    for(int i = 0; i < E; i++){
+    for(int i = 0; i < m; i++){
         if(!same(e[i].u, e[i].v)){
             unite(e[i].u, e[i].v);
             res += e[i].cost;
@@ -64,17 +61,14 @@ LL kruskal(){
     return res;
 }
 int main(){
-    int T;cin>>T;
-    while(T--){
-        int M;cin>>N>>M;
-        //memset(adj, -1, sizeof(adj));
-        E = 0;
-        while(M--){
-            int a,b,c;scanf("%d%d%d", &a, &b, &c);
-            addedge(a, b ,c);
-        }
-        LL ans = kruskal();
-        cout << ans << endl;
+    int n, m;
+    scanf("%d %d", &n, &m);
+    for(int i = 0; i < m; i++) {
+        int a,b,c;
+        e[i].u = getint();
+        e[i].v = getint();
+        e[i].cost = getint();
     }
+    cout << kruskal(n, m) << endl;
     return 0;
 }
