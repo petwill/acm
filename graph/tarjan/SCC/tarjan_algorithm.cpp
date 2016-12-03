@@ -17,50 +17,57 @@ SCC
 　　並且將此SCC儲存到其他地方。
 **/
 
-#include <bits/stdc++.h>
-using namespace std;
-const int N = 10000;
-int DFN[N], LOW[N];
+#define maxn 100005
 
-void tarjan(int i)//Tarjan
-{
-	int j;
-	DFN[i]=LOW[i]=++Dindex;//Index 时间戳
-	instack[i]=true;//标记入栈
-	Stap[++Stop]=i;//入栈
-	for (edge *e=V[i];e;e=e->next)//枚举所有相连边
-	{
-		j=e->t;//临时变量
-		if (!DFN[j])//j没有被搜索过
-		{
-			tarjan(j);//递归搜索j
-			if (LOW[j]<LOW[i])//回溯中发现j找到了更老的时间戳
-				LOW[i]=LOW[j];//更新能达到老时间戳
-		}
-		else if (instack[j] && DFN[j]<LOW[i])//如果已经印有时间戳 且 时间戳比较小,则有环
-			LOW[i]=DFN[j];//当前记录可追溯时间戳更新
-	}
-	if (DFN[i]==LOW[i])//可追溯最老是自己,表明自己是当前强连通分量的栈底
-	{
-		Bcnt++;//强连通分量数增加
-		do
-		{
-			j=Stap[Stop--];//出栈顶元素
-			instack[j]=false;//标记出栈
-			Belong[j]=Bcnt;//记录j所在的强连通分量编号
-		}
-		while (j!=i);//如果是当前元素,弹栈完成
-	}
+int n;
+vector<int> G[maxn];
+stack<int> Stack;
+int scnt, Time;
+int belong[maxn], dfn[maxn], low[maxn];
+bool instack[maxn];
+
+void init() {
+    scnt = Time = 0;
+    for(int i = 0; i < n; i++) G[i].clear();
+    while(!Stack.empty()) Stack.pop();
+    memset(dfn, 0, sizeof(dfn));
+    memset(instack, false, sizeof(instack));
 }
-void solve()
-{
-	int i;
-	Stop=Bcnt=Dindex=0;
-	memset(DFN,0,sizeof(DFN));//标记为为搜索过
-	for (i=1;i<=N;i++)
-		if (!DFN[i])
-			tarjan(i);
+void dfs(int u) {
+    dfn[u] = low[u] = ++Time;
+    Stack.push(u); instack[u] = true;
+    for(int v : G[u]) {
+        if ( !dfn[v] ) {
+            dfs(v);
+            low[u] = min(low[u], low[v]);
+        }
+        else if(instack[v])
+            low[u] = min(low[u], dfn[v]);
+    }
+    if(low[u] == dfn[u]) {
+        int tp;
+        do{
+            tp = Stack.top(); Stack.pop();
+            instack[tp] = false;
+            belong[tp] = scnt;
+        } while(tp != u);
+        scnt++;
+    }
 }
+void tarjan() {
+    for(int i = 0; i < n; i++)
+        if(!dfn[i])
+            dfs(i);
+}
+
 int main(){
-    solve();
+  
+	int T=1;
+//    cin >> T;
+	while(T--){
+        n = getint();
+	init();
+        //addEdge
+	tarjan();
+        // belong => [ 0 .. scnt )
 }
