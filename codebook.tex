@@ -10,8 +10,8 @@
 
 \usepackage{xeCJK}                              %xeCJK
 \setCJKmainfont{AR PL UMing CN}
-\usepackage{listings} 
-\usepackage{fancyhdr} 
+\usepackage{listings}
+\usepackage{fancyhdr}
 
 \usepackage{amsmath, courier, listings, fancyhdr, graphicx}
 \topmargin=0pt
@@ -57,7 +57,7 @@ stringstyle=\itshape\color{Green4},
 \fancyhead[L]{National Taiwan University}
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\contentsname}{Contents} 
+\renewcommand{\contentsname}{Contents}
 
 
 %\scriptsize
@@ -91,9 +91,9 @@ stringstyle=\itshape\color{Green4},
 \subsection{Bi-edge-connected Subgraph}
 \lstinputlisting{graph/tarjan/橋and邊雙連通分量/template.cpp}
 \subsection{SCC}
-\lstinputlisting{graph/tarjan/SCC/SCC(tarjan).cpp}
-\subsection{Steiner Tree( PECaveros )}
-\lstinputlisting{graph/steinerTree.cpp}
+\lstinputlisting{graph/tarjan/SCC/template.cpp}
+%\subsection{Steiner Tree( PECaveros )}
+%\lstinputlisting{graph/steinerTree.cpp}
 \subsection{Edmond's Matching Algorithm}
 \lstinputlisting{graph/blossom2.cpp}
 \subsection{Tree Decomposition}
@@ -102,8 +102,11 @@ stringstyle=\itshape\color{Green4},
 \lstinputlisting{graph/treeLongestPath.cpp}
 
 \section{Flow}
+\lstinputlisting{flow/README.txt}
 \subsection{Dinic Maxflow}
 \lstinputlisting{flow/dinic.cpp}
+\subsection{Sw Mincut}
+\lstinputlisting{flow/swMincut.cpp}
 
 \section{Data Structure}
 \subsection{Disjoint Set}
@@ -134,6 +137,8 @@ stringstyle=\itshape\color{Green4},
 \lstinputlisting{math/nttCrt.cpp}
 \subsection{Big Number}
 \lstinputlisting{math/bigNum.cpp}
+\subsection{Simplex}
+\lstinputlisting{math/simplex.cpp}
 
 \section{string}
 \subsection{Palindromic Tree}
